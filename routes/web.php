@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('admin/account', 'AccountController');
+Route::resource('admin/complaints', 'ComplaintsController');
