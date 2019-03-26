@@ -1,7 +1,7 @@
 @extends('layout.admin-master')
 @section('content')
     <form action="/admin/account" method="post">
-        @csrf
+        {{csrf_field()}}
         Username <input type="text" name="username">
         <br>
         Images <input type="text" name="images">
