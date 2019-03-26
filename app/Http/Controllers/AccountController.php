@@ -40,7 +40,6 @@ class AccountController extends Controller
         $account = new Account();
         $account->username = $request->get('username');
         $account->password = $request->get('password');
-        $account->images = $request->get('images');
         $account->save();
         return $account;
     }
