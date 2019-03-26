@@ -146,7 +146,7 @@
                 }
 
                 addMarker({
-                    coords: {lat: doc.data().latitude, lng: doc.data().longitude},
+                    coords: {lat: parseFloat( doc.data().latitude),lng:  parseFloat(doc.data().longitude)},
                     iconImage: image,
                     content: '<h1>' + doc.data().problemTitle + '</h1>'
                 })

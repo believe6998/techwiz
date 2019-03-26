@@ -36,24 +36,20 @@ class ComplaintsController extends Controller
      */
     public function store(Request $request)
    {
-       $db = new FirestoreClient();
+
+       $db = new FirestoreClient([
+           'projectId' => "hello-firebase-2019001",
+       ]);
+
        $data = [
             'title' => $request->get('title'),
             'type' => $request->get('type'),
             'longitude' => $request->get('longitude'),
             'latitude' => $request->get('latitude'),
         ];
+
         $addedDocRef = $db->collection('complaints')->add($data);
-        printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
-//        $db = firebase.firestore();
-//        $data = [
-//            'title' => $request->get('title'),
-//            'type' => $request->get('type'),
-//            'longitude' => $request->get('longitude'),
-//            'latitude' => $request->get('latitude'),
-//        ];
-//        $addedDocRef = $db->collection('complaints')->add($data);
-//        printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
+
         $complaint = new Complaints();
         $complaint->title = $request->get('title');
         $complaint->type = $request->get('type');
