@@ -35,11 +35,9 @@
     </script>
 </head>
 <body>
-<div id="header" style="background: aqua">
+<div id="header" style="background: aqua"></div>
 
-</div>
-<div id="map">
-</div>
+<div id="map"></div>
 <script>
 
 
@@ -63,41 +61,25 @@
             jam:
                 {
                     url: 'http://maps.google.com/mapfiles/kml/shapes/caution.png',
-                    // This marker is 20 pixels wide by 32 pixels high.
                     scaledSize: new google.maps.Size(32, 32),
-                    // The origin for this image is (0, 0).
                     origin: new google.maps.Point(0, 0),
-                    // The anchor for this image is the base of the flagpole at (0, 32).
                     anchor: new google.maps.Point(0, 32)
                 },
             accident:
                 {
                     url: 'http://maps.google.com/mapfiles/kml/paddle/red-diamond.png',
-                    // This marker is 20 pixels wide by 32 pixels high.
                     scaledSize: new google.maps.Size(32, 32),
-                    // The origin for this image is (0, 0).
                     origin: new google.maps.Point(0, 0),
-                    // The anchor for this image is the base of the flagpole at (0, 32).
                     anchor: new google.maps.Point(0, 32)
                 },
             disaster:
                 {
                     url: 'http://maps.google.com/mapfiles/kml/shapes/firedept.png',
-                    // This marker is 20 pixels wide by 32 pixels high.
                     scaledSize: new google.maps.Size(32, 32),
-                    // The origin for this image is (0, 0).
                     origin: new google.maps.Point(0, 0),
-                    // The anchor for this image is the base of the flagpole at (0, 32).
                     anchor: new google.maps.Point(0, 32)
                 }
-
         };
-
-        // Loop through markers
-        // for (var i = 0; i < markers.length; i++) {
-        //     // Add marker
-        //     addMarker(markers[i]);
-        // }
 
         // Add Marker Function
         function addMarker(props) {
@@ -120,36 +102,34 @@
                 });
             }
 
-            var contentString = '<div id="content">'+
-                '<div id="siteNotice">'+
-                '</div>'+
-                '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-                '<div id="bodyContent">'+
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+                '<div id="bodyContent">' +
                 '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-                'sandstone rock formation in the southern part of the '+
-                'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-                'south west of the nearest large town, Alice Springs; 450&#160;km '+
-                '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-                'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-                'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-                'Aboriginal people of the area. It has many springs, waterholes, '+
-                'rock caves and ancient paintings. Uluru is listed as a World '+
-                'Heritage Site.</p>'+
-                '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-                'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-                '(last visited June 22, 2009).</p>'+
-                '</div>'+
+                'sandstone rock formation in the southern part of the ' +
+                'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
+                'south west of the nearest large town, Alice Springs; 450&#160;km ' +
+                '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
+                'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
+                'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
+                'Aboriginal people of the area. It has many springs, waterholes, ' +
+                'rock caves and ancient paintings. Uluru is listed as a World ' +
+                'Heritage Site.</p>' +
+                '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+                'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
+                '(last visited June 22, 2009).</p>' +
+                '</div>' +
                 '</div>';
-
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
 
-            marker.addListener('click', function() {
+            marker.addListener('click', function () {
                 infowindow.open(map, marker);
             });
-
         }
 
         db.collection("complaints").onSnapshot(function (querySnapshot) {
@@ -157,11 +137,11 @@
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.data().latitude);
                 var image;
-                if(doc.data().type === "jam"){
+                if (doc.data().type === "jam") {
                     image = images.jam
-                }else if(doc.data().type === "accident") {
+                } else if (doc.data().type === "accident") {
                     image = images.accident
-                } else if(doc.data().type === "disaster"){
+                } else if (doc.data().type === "disaster") {
                     image = images.disaster
                 }
 
