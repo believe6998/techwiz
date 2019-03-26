@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-//use Google\Cloud\Firestore\FirestoreClient;
 use App\Complaints;
 use Illuminate\Http\Request;
+use Google\Cloud\Firestore\FirestoreClient;
+use Auth;
 
 class ComplaintsController extends Controller
 {
@@ -15,7 +15,7 @@ class ComplaintsController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -25,7 +25,7 @@ class ComplaintsController extends Controller
      */
     public function create()
     {
-        return view('admin.complaint.form');
+        return view("admin.complaint.form");
     }
 
     /**
@@ -35,14 +35,11 @@ class ComplaintsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-   {
-
-
-       $db = new FirestoreClient([
-           'projectId' => "hello-firebase-2019001",
-       ]);
-
-       $data = [
+    {
+        $db = new FirestoreClient([
+            'projectId' => "hello-firebase-2019001",
+        ]);
+        $data = [
             'title' => $request->get('title'),
             'type' => $request->get('type'),
             'longitude' => $request->get('longitude'),
@@ -54,6 +51,10 @@ class ComplaintsController extends Controller
         $complaint = new Complaints();
         $complaint->title = $request->get('title');
         $complaint->type = $request->get('type');
+        $complaint->userid = Auth::user()->id;;
+
+//        $complaint->longitude = $request->get('longitude');
+//        $complaint->latitude = $request->get('latitude');
         $complaint->save();
         return $complaint;
 
