@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Complaints;
 use Illuminate\Http\Request;
 use Google\Cloud\Firestore\FirestoreClient;
@@ -40,7 +39,6 @@ class ComplaintsController extends Controller
         $db = new FirestoreClient([
             'projectId' => "hello-firebase-2019001",
         ]);
-
         $data = [
             'title' => $request->get('title'),
             'type' => $request->get('type'),
@@ -59,6 +57,7 @@ class ComplaintsController extends Controller
 //        $complaint->latitude = $request->get('latitude');
         $complaint->save();
         return $complaint;
+
     }
 
     /**

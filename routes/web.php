@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Route::resource('admin/account', 'AccountController');
 Route::resource('admin/complaints', 'ComplaintsController');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -25,3 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//client
+//Route::resource('/home', function ());
+Route::get('/home', function () {
+    return view('client.home');
+});
