@@ -28,20 +28,5 @@
         });
 
 
-        // $("#buttonDo").click(function () {
-        //     db.collection("complaints").add({
-        //         title: $("input[name='title']").val(),
-        //         type: $("select[name='type']").val(),
-        //         longitude: $("input[name='longitude']").val(),
-        //         latitude: $("input[name='latitude']").val(),
-        //     }).then(function(docRef) {
-        //         console.log("Problem written with ID: ", docRef.id);
-        //     })
-        //         .catch(function(error) {
-        //             console.error("Error adding problem: ", error);
-        //         });
-        // });
-
-
     </script>
 @endsection

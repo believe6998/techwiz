@@ -17,3 +17,22 @@ Route::get('/', function () {
 
 Route::resource('admin/account', 'AccountController');
 Route::resource('admin/complaints', 'ComplaintsController');
+
+
+
+//Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@']);
+//
+//Route::get('/register', ['as' => 'register', 'uses' => 'Client\ProductController@getSignUp']);
+//
+//Route::post('/login', ['as' => 'login', 'uses' => 'Client\ProductController@postSignIn']);
+//
+//Route::post('/register', ['as' => 'register', 'uses' => 'Client\ProductController@postSignUp']);
+//
+//Route::get('/logout', ['as' => 'logout', 'uses' => 'Client\ProductController@getLogOut']);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

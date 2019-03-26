@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Complaints;
+use App\Help;
 use Illuminate\Http\Request;
 
-class ComplaintsController extends Controller
+class HelpController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,35 +35,16 @@ class ComplaintsController extends Controller
      */
     public function store(Request $request)
     {
-        $db = new FirestoreClient([
-            'projectId' => "hello-firebase-2019001",
-        ]);
-
-        $data = [
-            'title' => $request->get('title'),
-            'type' => $request->get('type'),
-            'longitude' => $request->get('longitude'),
-            'latitude' => $request->get('latitude'),
-        ];
-
-        $addedDocRef = $db->collection('complaints')->add($data);
-
-        $complaint = new Complaints();
-        $complaint->title = $request->get('title');
-        $complaint->type = $request->get('type');
-        $complaint->longitude = $request->get('longitude');
-        $complaint->latitude = $request->get('latitude');
-        $complaint->save();
-        return $complaint;
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Complaints  $complaints
+     * @param  \App\Help  $help
      * @return \Illuminate\Http\Response
      */
-    public function show(Complaints $complaints)
+    public function show(Help $help)
     {
         //
     }
@@ -71,10 +52,10 @@ class ComplaintsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Complaints  $complaints
+     * @param  \App\Help  $help
      * @return \Illuminate\Http\Response
      */
-    public function edit(Complaints $complaints)
+    public function edit(Help $help)
     {
         //
     }
@@ -83,10 +64,10 @@ class ComplaintsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Complaints  $complaints
+     * @param  \App\Help  $help
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Complaints $complaints)
+    public function update(Request $request, Help $help)
     {
         //
     }
@@ -94,10 +75,10 @@ class ComplaintsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Complaints  $complaints
+     * @param  \App\Help  $help
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Complaints $complaints)
+    public function destroy(Help $help)
     {
         //
     }

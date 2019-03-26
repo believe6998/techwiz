@@ -16,6 +16,8 @@ class CreateComplaintsTable extends Migration
         Schema::create('complaints', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedInteger('userId');
+            $table->foreign('userId')->references('id')->on('users');
             $table->string('title');
             $table->string('type');
         });
