@@ -8,6 +8,10 @@
         <br>
         Password <input type="password" name="password">
         <br>
+        <input type="hidden" name="latitude">
+        <input type="hidden" name="longitude">
+
         <input type="submit" value="Submit">
     </form>
+
 @endsection
