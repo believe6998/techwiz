@@ -26,7 +26,7 @@ class ComplaintsController extends Controller
      */
     public function create()
     {
-        return view("admin.complaint.form");
+        return view("client.complaint.form");
     }
 
     /**
@@ -35,6 +35,7 @@ class ComplaintsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $db = new FirestoreClient([
@@ -54,9 +55,8 @@ class ComplaintsController extends Controller
         $complaint->title = $request->get('title');
         $complaint->type = $request->get('type');
         $complaint->userid = Auth::user()->id;;
-
-//        $complaint->longitude = $request->get('longitude');
-//        $complaint->latitude = $request->get('latitude');
+        $complaint->longitude = $request->get('longitude');
+        $complaint->latitude = $request->get('latitude');
         $complaint->save();
         return $complaint;
     }

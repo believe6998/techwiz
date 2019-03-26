@@ -16,7 +16,7 @@
     </style>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 
-    <div id="map" style="height: 100vh"></div>
+    <div id="map" style="height: 80vh"></div>
     <script>
         var config = {
             apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",

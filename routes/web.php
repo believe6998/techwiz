@@ -16,11 +16,13 @@ Route::get('/', function () {
 });
 
 Route::resource('admin/account', 'AccountController');
-Route::resource('admin/complaints', 'ComplaintsController');
+Route::resource('client/complaints', 'ComplaintsController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/test', "ComplaintsController@test");
 
 Auth::routes();
 
