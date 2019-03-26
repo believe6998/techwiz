@@ -27,5 +27,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //client
 //Route::resource('/home', function ());
 Route::get('/home', function () {
-    return view('client.home');
+    return view('layouts.app');
 });
+
