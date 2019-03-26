@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Google\Cloud\Firestore\FirestoreClient;
 use App\Complaints;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ComplaintsController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +25,7 @@ class ComplaintsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.complaint.form');
     }
 
     /**
@@ -34,8 +35,30 @@ class ComplaintsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+   {
+       $db = new FirestoreClient();
+       $data = [
+            'title' => $request->get('title'),
+            'type' => $request->get('type'),
+            'longitude' => $request->get('longitude'),
+            'latitude' => $request->get('latitude'),
+        ];
+        $addedDocRef = $db->collection('complaints')->add($data);
+        printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
+//        $db = firebase.firestore();
+//        $data = [
+//            'title' => $request->get('title'),
+//            'type' => $request->get('type'),
+//            'longitude' => $request->get('longitude'),
+//            'latitude' => $request->get('latitude'),
+//        ];
+//        $addedDocRef = $db->collection('complaints')->add($data);
+//        printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
+        $complaint = new Complaints();
+        $complaint->title = $request->get('title');
+        $complaint->type = $request->get('type');
+        $complaint->save();
+        return $complaint;
     }
 
     /**
