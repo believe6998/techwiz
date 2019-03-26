@@ -17,3 +17,9 @@ Route::get('/', function () {
 
 Route::resource('admin/account', 'AccountController');
 Route::resource('admin/complaints', 'ComplaintsController');
+
+//client
+//Route::resource('/home', function ());
+Route::get('/home', function () {
+    return view('client.home');
+});

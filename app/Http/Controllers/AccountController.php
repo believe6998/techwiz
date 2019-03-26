@@ -131,11 +131,11 @@ class AccountController extends Controller
         if ($obj == null) {
             return response()->json(['message' => 'Acc không tồn tại hoặc đã bị xoá!'], 404);
         }else{
-
+            $obj->status = 0;
+            $obj->save();
+            return response()->json(['message' => 'Đã xoá thông tin danh mục']);
+            redirect("/admin/account");
         }
-        $obj->status = 0;
-        $obj->save();
-        return response()->json(['message' => 'Đã xoá thông tin danh mục'], 200);
-//        redirect("/admin/account");
+
     }
 }
