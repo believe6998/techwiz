@@ -38,8 +38,6 @@
         firebase.initializeApp(config);
         var db = firebase.firestore();
 
-
-
         function doPostHelps(id){
 
             navigator.geolocation.getCurrentPosition(showPosition);
