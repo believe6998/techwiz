@@ -66,6 +66,7 @@
 
         function initMap() {
             // Map options
+            
             var styleArray =[
                 {
                     "featureType": "poi",
@@ -122,28 +123,27 @@
                 },
                 fullscreenControl: true
             };
-
             var map = new google.maps.Map(document.getElementById('map'), options);
 
             var images = {
                 jam:
                     {
-                        url: 'https://www.codex-international.org/wp-content/uploads/2017/11/hotspot_pulse-1.gif',
-                        scaledSize: new google.maps.Size(32, 32),
+                        url: 'https://www.tycoifs.ca/wps/wcm/connect/61557331-2b17-4237-a6fe-e77ecdf8dbbb/pulse12.gif?MOD=AJPERES&CACHEID=ROOTWORKSPACE-61557331-2b17-4237-a6fe-e77ecdf8dbbb-kNcW.Bt',
+                        scaledSize: new google.maps.Size(70, 70),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(0, 32)
                     },
                 accident:
                     {
                         url: 'https://hotelmarkovo.bg/en/wp-content/uploads/2018/05/hotelmarkovogreenpulse.gif',
-                        scaledSize: new google.maps.Size(32, 32),
+                        scaledSize: new google.maps.Size(70, 70),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(0, 32)
                     },
                 disaster:
                     {
                         url: 'https://iwant2study.org/lookangejss/01_measurement/ejss_model_horizontalverticalquiz01/horizontalvertical/giphy.gif',
-                        scaledSize: new google.maps.Size(32, 32),
+                        scaledSize: new google.maps.Size(70, 70),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(0, 32)
                     }
