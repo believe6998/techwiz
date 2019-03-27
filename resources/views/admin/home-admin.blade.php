@@ -66,7 +66,7 @@
 
         function initMap() {
             // Map options
-            
+
             var styleArray =[
                 {
                     "featureType": "poi",
@@ -179,6 +179,8 @@
                     '</div>' +
                     '<h1>'+doc.title+'</h1>' +
                     '<div id="bodyContent">' +
+                    '<button onclick="test(\'' + id + '\')">xoa</button>' +
+                    '</button>' +
                     '</div>';
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
