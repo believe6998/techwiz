@@ -1,4 +1,4 @@
-@extends('layout.client-layout')
+@extends('layouts.app')
 @section('content')
     <div>
         <form>
@@ -44,21 +44,23 @@
 
             navigator.geolocation.getCurrentPosition(showPosition);
             function showPosition(position) {
-                var check = false;
                 db.collection("helps").add({
                     longitude: position.coords.longitude,
                     latitude: position.coords.latitude,
                     userid: id,
                     status:0
                 }).then(function(docRef) {
+
                 }).catch(function(error) {
                     alert("Error adding document: ", error);
                 });
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
+
                 $.ajax({
                     'url': '/help',
                     'method': 'POST',
@@ -117,5 +119,6 @@
                 });
             }
         }
+
     </script>
 @endsection
