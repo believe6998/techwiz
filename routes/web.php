@@ -12,31 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('wellcome');
 });
-
-Route::resource('admin/account', 'AccountController');
-//<<<<<<< HEAD
-Route::resource('client/complaints', 'ComplaintsController');
-
-//=======
-//Route::resource('admin/complaints', 'ComplaintsController');
-//>>>>>>> 6c52878a623da68a12f7c0a9d3b9dd5a40278c89
+//auth
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::post('/help', 'HelpController@store');
-
-Auth::routes();
+//admin
+Route::resource('admin/account', 'AccountController');
+Route::get('/admin/home', function () {
+    return view('admin.home');
+});
 
 //client
-//Route::resource('/home', function ());
+Route::post('/help', 'HelpController@store');
+Route::resource('client/complaints', 'ComplaintsController');
 
-Route::get('/home', function () {
-    return view('client.home');
-});
-Route::get('/test', function () {
-    return view('client.test');
-});
 

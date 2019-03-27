@@ -1,4 +1,4 @@
-@extends('layout.client-layout')
+@extends('layouts.app')
 @section('content')
     <div>
         <form>
