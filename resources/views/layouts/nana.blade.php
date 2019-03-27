@@ -18,10 +18,6 @@
 </head>
 
 <body>
-<!-- Preloader -->
-<div id="preloader">
-    <div class="loader"></div>
-</div>
 
 <!-- **** Header Area Start **** -->
 <header class="header-area">
