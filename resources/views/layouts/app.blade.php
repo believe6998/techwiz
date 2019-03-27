@@ -151,14 +151,7 @@
 </header>
 @guest
     @else
-    <div class="position-relative">
-        <div class="floating-panel">
-            <button>open form</button>
-        </div>
-        <div class="floating-panel" style="top:80px">
-            <button><h2>SOS</h2></button>
-        </div>
-    </div>
+
     @endguest
 
 @section('content')
