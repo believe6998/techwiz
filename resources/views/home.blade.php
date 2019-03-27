@@ -61,7 +61,7 @@
 
         function initMap() {
             // Map options
-
+            
             var styleArray =[
                 {
                     "featureType": "poi",
@@ -162,17 +162,10 @@
                     marker.setIcon({
                         url: 'http://www.jamiekatzpetdetective.com/stick_figure_help_button_500_clr_9911.gif',
                         scaledSize: new google.maps.Size(50, 50),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 32)
+                        // origin: new google.maps.Point(0, 0),
+                        // anchor: new google.maps.Point(0, 32)
                     })
                 }
-
-                // // Check content
-                // if (doc.content) {
-                //     var infoWindow = new google.maps.InfoWindow({
-                //         content: doc.content
-                //     });
-                // }
 
                 var contentString = '<div id="content">' +
                     '<div id="siteNotice">' +
