@@ -20,6 +20,9 @@ class CreateComplaintsTable extends Migration
             $table->foreign('userId')->references('id')->on('users');
             $table->string('title');
             $table->string('type');
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->integer('status')->default(0);
         });
     }
 

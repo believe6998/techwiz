@@ -253,5 +253,6 @@
 <script src="{{asset('/js/default-assets/active.js')}}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
 
+
 </body>
 </html>
