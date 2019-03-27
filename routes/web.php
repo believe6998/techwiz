@@ -28,4 +28,6 @@ Route::get('/admin/home', function () {
 Route::post('/help', 'HelpController@store');
 Route::resource('client/complaints', 'ComplaintsController');
 
-
+Route::get('/test',function (){
+    return "day la trang test";
+});
