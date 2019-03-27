@@ -88,21 +88,21 @@
             var images = {
                 jam:
                     {
-                        url: 'http://maps.google.com/mapfiles/kml/shapes/caution.png',
+                        url: 'https://www.codex-international.org/wp-content/uploads/2017/11/hotspot_pulse-1.gif',
                         scaledSize: new google.maps.Size(32, 32),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(0, 32)
                     },
                 accident:
                     {
-                        url: 'http://maps.google.com/mapfiles/kml/paddle/red-diamond.png',
+                        url: 'https://hotelmarkovo.bg/en/wp-content/uploads/2018/05/hotelmarkovogreenpulse.gif',
                         scaledSize: new google.maps.Size(32, 32),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(0, 32)
                     },
                 disaster:
                     {
-                        url: 'http://maps.google.com/mapfiles/kml/shapes/firedept.png',
+                        url: 'https://iwant2study.org/lookangejss/01_measurement/ejss_model_horizontalverticalquiz01/horizontalvertical/giphy.gif',
                         scaledSize: new google.maps.Size(32, 32),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(0, 32)
