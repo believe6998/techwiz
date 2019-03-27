@@ -26,7 +26,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //client
 //Route::resource('/home', function ());
+
 Route::get('/home', function () {
-    return view('layouts.app');
+    return view('client.home');
+});
+Route::get('/test', function () {
+    return view('client.test');
 });
 

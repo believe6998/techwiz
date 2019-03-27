@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Title -->
+    <title>Smart Traffic</title>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{{asset('/img/core-img/logo-short-cut.png')}}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
+    <!-- Stylesheet -->
     <link href="{{ asset('/css/mystyle.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        #navbarDropdown.hover{
-            color: #92C800;
-        }
-    </style>
 </head>
+
 <body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+<!-- **** Header Area Start **** -->
 <header class="header-area">
     <!-- Top Header Area Start -->
     <div class="top-header-area">
@@ -76,7 +74,7 @@
                         </div>
                         <!-- Nav Start -->
                         <div class="classynav">
-                            <ul id="nav" style="font-size:45px;">
+                            <ul id="nav">
                                 <li class="active"><a href="./index.html">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
@@ -89,30 +87,9 @@
                             </ul>
 
                             <!-- Contact btn -->
-                            @guest
-                                <li class="contact-btn"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                                @if (Route::has('register'))
-                                    <li class="contact-btn"><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                                @endif
-                            @else
-                                <li class="dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
-
-                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" style="color: #92C800;" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
-                            @endguest
+                            <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
+                                <a href="#" data-target="#signInModal" data-toggle="modal">Sign In</a>
+                            </div>
                         </div>
                         <!-- Nav End -->
                     </div>
@@ -121,8 +98,161 @@
         </div>
     </div>
 </header>
+<!-- **** Header Area End **** -->
+
+
+<!--Modal-->
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Account</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="tab-content">
+                    <div id="logIn" class="tab-pane active">
+                        <h4>Sign In</h4>
+                        <hr>
+                        <form name="signIn-form" id="signIn-form">
+                            <div class="form-group">
+                                <label>User Name</label>
+                                <input type="text" name="userName" class="form-control"
+                                       placeholder="Enter User Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control"
+                                       placeholder="Enter Password">
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input"
+                                       style="margin-top: 10px">
+                                <label class="form-check-label">Remember Me</label>
+                            </div>
+                            <div class="modal-footer">
+                                <label>&nbsp;</label>
+                                <button type="reset" class="btn" name="btn-reset" value="Reset">
+                                    Reset
+                                </button>
+                                <button type="submit" class="btn" name="btn-create" value="Create">
+                                    Sign In
+                                </button>
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            Have you an account? <br>
+                            <a href="#signUpModal" data-toggle="tab">Sign Up</a>
+                        </div>
+                    </div>
+                    <div id="signUpModal" class="tab-pane fade">
+                        <h4>Sign Up</h4>
+                        <hr>
+                        <form name="signUp-form" id="signUp-form">
+                            <div class="form-group">
+                                <label>User Name</label>
+                                <input type="text" name="userName" class="form-control"
+                                       placeholder="Enter User Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control"
+                                       placeholder="Enter Email">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control"
+                                       placeholder="Enter Password">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" name="confirm-password" class="form-control"
+                                       placeholder="Enter Confirm Password">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" name="phone" class="form-control"
+                                       placeholder="Enter Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" name="address" class="form-control"
+                                       placeholder="Enter Confirm Password">
+                            </div>
+                            <div class="form-group">
+                                <label>Passport</label>
+                                <input type="text" name="passport" class="form-control"
+                                       placeholder="Enter Passport">
+                            </div>
+                            <div class="form-group">
+                                <label>Voter ID</label>
+                                <input type="text" name="voterID" class="form-control"
+                                       placeholder="Enter Voter ID/SSNID">
+                            </div>
+                            <div class="form-group">
+                                <label>Driving Licenses</label>
+                                <input type="text" name="driving" class="form-control"
+                                       placeholder="Enter Driving Licenses">
+                            </div>
+                            <div class="modal-footer">
+                                <label>&nbsp;</label>
+                                <button type="reset" class="btn" name="btn-reset" value="Reset">
+                                    Reset
+                                </button>
+                                <button type="submit" class="btn" name="btn-create" value="Create">
+                                    Sign Up
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal End-->
+
+
 @section('content')
 @show()
+<!-- **** Blog area End **** -->
+
+<!-- **** Partner Area Start **** -->
+<!--<div class="partner-area wow fadeInUp" data-wow-delay="200ms">-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="col-12">-->
+<!--<div class="partner-logo-slide owl-carousel">-->
+<!--&lt;!&ndash; Single Partner Logo &ndash;&gt;-->
+<!--<a href="#" class="partner-logo wow fadeInUp" data-wow-delay="100ms"><img-->
+<!--src="img/core-img/1.png"-->
+<!--alt=""></a>-->
+<!--&lt;!&ndash; Single Partner Logo &ndash;&gt;-->
+<!--<a href="#" class="partner-logo wow fadeInUp" data-wow-delay="300ms"><img-->
+<!--src="img/core-img/2.png"-->
+<!--alt=""></a>-->
+<!--&lt;!&ndash; Single Partner Logo &ndash;&gt;-->
+<!--<a href="#" class="partner-logo wow fadeInUp" data-wow-delay="500ms"><img-->
+<!--src="img/core-img/3.png"-->
+<!--alt=""></a>-->
+<!--&lt;!&ndash; Single Partner Logo &ndash;&gt;-->
+<!--<a href="#" class="partner-logo wow fadeInUp" data-wow-delay="700ms"><img-->
+<!--src="img/core-img/4.png"-->
+<!--alt=""></a>-->
+<!--&lt;!&ndash; Single Partner Logo &ndash;&gt;-->
+<!--<a href="#" class="partner-logo wow fadeInUp" data-wow-delay="900ms"><img-->
+<!--src="img/core-img/5.png"-->
+<!--alt=""></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!-- **** Partner Area End **** -->
+
 <!-- **** Footer Area Start **** -->
 <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
         style="background-image: url({{asset('/img/bg-img/17.jpg')}});">
@@ -251,7 +381,7 @@
 <script src="{{asset('js/rehomes.bundle.js')}}"></script>
 <!-- Active -->
 <script src="{{asset('/js/default-assets/active.js')}}"></script>
-<script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>
+
 </html>

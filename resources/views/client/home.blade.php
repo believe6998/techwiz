@@ -1,5 +1,6 @@
-@extends('layout.client-layout')
+@extends('layouts.app')
 @section('content')
+
     <!-- **** Welcome Maps Area Start **** -->
     <div class="welcome-area wow fadeInUp" data-wow-delay="200ms">
         <div class="google-maps">
