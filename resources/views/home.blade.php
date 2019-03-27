@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <style>
         body {
             padding: 0;
@@ -12,28 +11,11 @@
             height: 92vh;
             width: 100%;
         }
-
-        .floating-panel {
-            position: absolute;
-            top: 20px;
-            left: 5%;
-            z-index: 5;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #999;
-            text-align: center;
-            font-family: 'Roboto', 'sans-serif';
-            line-height: 30px;
-            padding-left: 10px;
-        }
-
-        .floating-panel {
-            margin-left: -52px;
-        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <div id="map" style="height: 80vh">
     </div>
+
     <script>
         var markerMap ={};
 
