@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.client-layout')
 
 @section('content')
 
@@ -13,10 +13,34 @@
             height: 92vh;
             width: 100%;
         }
+        .floating-panel {
+            position: absolute;
+            top: 20px;
+            left: 5%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+        .floating-panel {
+            margin-left: -52px;
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
-
-    <div id="map" style="height: 80vh"></div>
+    <div class="position-relative">
+        <div class="floating-panel">
+            <button>open form</button>
+        </div>
+        <div class="floating-panel" style="top:80px">
+            <button><h2>SOS</h2></button>
+        </div>
+        <div id="map" style="height: 80vh">
+    </div>
+    </div>
     <script>
         var config = {
             apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
@@ -29,12 +53,33 @@
         firebase.initializeApp(config);
         var db = firebase.firestore();
 
+        function test() {
+            alert(1)
+        }
         function initMap() {
             // Map options
+
             var options = {
                 zoom: 15,
                 center: {lat: 21.0288722, lng: 105.7795577}
+                ,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    position: google.maps.ControlPosition.TOP_CENTER
+                },
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_BOTTOM
+                },
+                scaleControl: true,
+                streetViewControl: true,
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_BOTTOM
+                },
+                fullscreenControl: true
             };
+
             // New map
             var map = new google.maps.Map(document.getElementById('map'), options);
             // Listen for click on map
@@ -89,6 +134,7 @@
                     '</div>' +
                     '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
                     '<div id="bodyContent">' +
+                    '<button onclick="test()" ">test</button>' +
                     '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
                     'sandstone rock formation in the southern part of the ' +
                     'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
@@ -102,11 +148,12 @@
                     '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
                     'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
                     '(last visited June 22, 2009).</p>' +
-                    '</div>' +
+                    '</button>' +
                     '</div>';
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
+
                 marker.addListener('click', function () {
                     infowindow.open(map, marker);
                 });

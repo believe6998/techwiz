@@ -16,14 +16,22 @@ Route::get('/', function () {
 });
 
 Route::resource('admin/account', 'AccountController');
+//<<<<<<< HEAD
 Route::resource('client/complaints', 'ComplaintsController');
 
+//=======
+//Route::resource('admin/complaints', 'ComplaintsController');
+//>>>>>>> 6c52878a623da68a12f7c0a9d3b9dd5a40278c89
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/test', "ComplaintsController@test");
+Route::post('/help', 'HelpController@store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//client
+//Route::resource('/home', function ());
+Route::get('/home', function () {
+    return view('client.home');
+});

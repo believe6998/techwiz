@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Help;
 use Illuminate\Http\Request;
+use Google\Cloud\Firestore\FirestoreClient;
+use Auth;
 
 class HelpController extends Controller
 {
@@ -35,7 +37,27 @@ class HelpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userid = Auth::user()->id;
+//
+//        $db = new FirestoreClient([
+//            'projectId' => "hello-firebase-2019001",
+//        ]);
+//
+//        $data = [
+//            'userid' => $userid,
+//            'longitude' => $request->get('longitude'),
+//            'latitude' => $request->get('latitude'),
+//            'status' => 0,
+//        ];
+//
+//        $addedDocRef = $db->collection('helps')->add($data);
+
+        $help = new Help();
+        $help->userid = $userid;
+        $help->longitude = $request->get('longitude');
+        $help->latitude = $request->get('latitude');
+        $help->save();
+        return $userid;
     }
 
     /**

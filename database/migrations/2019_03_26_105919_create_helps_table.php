@@ -16,8 +16,8 @@ class CreateHelpsTable extends Migration
         Schema::create('helps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsignedInteger('userId');
-            $table->foreign('userId')->references('id')->on('users');
+            $table->unsignedInteger('userid');
+            $table->foreign('userid')->references('id')->on('users');
             $table->string('latitude');
             $table->string('longitude');
             $table->integer('status')->default(0);

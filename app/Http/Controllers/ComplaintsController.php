@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Complaints;
 use Illuminate\Http\Request;
 use Google\Cloud\Firestore\FirestoreClient;
@@ -38,27 +37,17 @@ class ComplaintsController extends Controller
 
     public function store(Request $request)
     {
-        $db = new FirestoreClient([
-            'projectId' => "hello-firebase-2019001",
-        ]);
-
-        $data = [
-            'title' => $request->get('title'),
-            'type' => $request->get('type'),
-            'longitude' => $request->get('longitude'),
-            'latitude' => $request->get('latitude'),
-        ];
-
-        $addedDocRef = $db->collection('complaints')->add($data);
+        $userid = Auth::user()->id;
 
         $complaint = new Complaints();
         $complaint->title = $request->get('title');
         $complaint->type = $request->get('type');
-        $complaint->userid = Auth::user()->id;;
+        $complaint->userid = $userid;
         $complaint->longitude = $request->get('longitude');
         $complaint->latitude = $request->get('latitude');
         $complaint->save();
         return $complaint;
+
     }
 
     /**
