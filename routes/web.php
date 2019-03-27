@@ -32,6 +32,11 @@ Auth::routes();
 
 //client
 //Route::resource('/home', function ());
+
 Route::get('/home', function () {
     return view('client.home');
 });
+Route::get('/test', function () {
+    return view('client.test');
+});
+
