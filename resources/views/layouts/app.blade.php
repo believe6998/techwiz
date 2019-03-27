@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Smart Traffic') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,8 +20,36 @@
     <link href="{{ asset('/css/mystyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
-        #navbarDropdown.hover{
+        #navbarDropdown:hover{
             color: #92C800;
+        }
+    </style>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        #map {
+            height: 92vh;
+            width: 100%;
+        }
+        .floating-panel {
+            position: absolute;
+            top: 20px;
+            left: 5%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+        .floating-panel {
+            margin-left: -52px;
         }
     </style>
 </head>
@@ -90,9 +118,9 @@
 
                             <!-- Contact btn -->
                             @guest
-                                <li class="contact-btn"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                                <li class="contact-btn"><a href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
                                 @if (Route::has('register'))
-                                    <li class="contact-btn"><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                                    <li class="contact-btn"><a href="{{ route('register') }}">{{ __('Sign Up') }}</a></li>
                                 @endif
                             @else
                                 <li class="dropdown">
@@ -121,6 +149,18 @@
         </div>
     </div>
 </header>
+@guest
+    @else
+    <div class="position-relative">
+        <div class="floating-panel">
+            <button>open form</button>
+        </div>
+        <div class="floating-panel" style="top:80px">
+            <button><h2>SOS</h2></button>
+        </div>
+    </div>
+    @endguest
+
 @section('content')
 @show()
 <!-- **** Footer Area Start **** -->
