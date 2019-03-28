@@ -197,7 +197,76 @@
 
         }
     </script>
+
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZkhD8Q5_XkZEthioPUXM0_bYX3Lp56WI&callback=initMap">
     </script>
+
+    <!-- *** Blog area Start *** -->
+    <section class="rehome-blog-area section-padding-100-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="200ms">
+                        <h2>Great Solution For <span style="color: #92c800">Smart Traffic</span></h2>
+                        <p>Traffic will no longer be your worry.</p>
+                    </div>
+                </div>
+
+                <!-- Single blog content -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-area wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Post Thumb -->
+                        <div class="post-thumb">
+                            <img src="img/bg-img/image_2019_03_27T06_31_58_130Z.png" alt=""
+                                 style="height: 230px;width: 100%">
+                        </div>
+                        <a class="post-title" href="single-blog1.html">Enforce existing road traffic laws.</a>
+                        <!-- Post Meta -->
+                        <div class="post-meta">
+                            <a class="post-author" href="#">By Polly Williams</a>
+                            <a class="post-date" href="#">Dec 19, 2018</a>
+                            <a class="post-comment" href="#">3 Comment</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single blog content -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-area wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Post Thumb -->
+                        <div class="post-thumb">
+                            <img src="img/bg-img/buytdep.jpg" alt="">
+                        </div>
+                        <a class="post-title" href="single-blog2.html">Improve perceptions of buses.</a>
+                        <!-- Post Meta -->
+                        <div class="post-meta">
+                            <a class="post-author" href="#">By Mattie Ramirez </a>
+                            <a class="post-date" href="#">Dec 19, 2018</a>
+                            <a class="post-comment" href="#">3 Comment</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single blog content -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-area wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Post Thumb -->
+                        <div class="post-thumb">
+                            <img src="img/bg-img/s3.png" alt="">
+                        </div>
+                        <a class="post-title" href="single-blog.html">Road pricing.</a>
+                        <!-- Post Meta -->
+                        <div class="post-meta">
+                            <a class="post-author" href="#">By Nicholas Brewer</a>
+                            <a class="post-date" href="#">Dec 19, 2018</a>
+                            <a class="post-comment" href="#">3 Comment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- *** Blog area End *** -->
 @endsection
