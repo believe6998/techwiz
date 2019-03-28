@@ -36,23 +36,7 @@
             width: 100%;
         }
 
-        .floating-panel {
-            position: absolute;
-            top: 20px;
-            left: 5%;
-            z-index: 5;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #999;
-            text-align: center;
-            font-family: 'Roboto', 'sans-serif';
-            line-height: 30px;
-            padding-left: 10px;
-        }
 
-        .floating-panel {
-            margin-left: -52px;
-        }
     </style>
 </head>
 <body>
@@ -113,7 +97,8 @@
                                 <li><a href="/about">About Us</a></li>
                                 @guest
                                 @else
-                                <li><a>
+                                <li>
+                                    <a>
                                         <button  onclick="doPostHelps({{ Auth::user()->id }})" style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
                                             SOS
                                         </button>
@@ -193,7 +178,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="" method="post">
                     <select  class="mdb-select md-form" id="type" name="type" >
                         <option value="jam">Traffic Jam</option>
                         <option value="accident">Accident</option>
@@ -214,7 +199,7 @@
                         </button>
                         @guest
                         @else
-                        <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="submit" class="btn" name="btn-create" value="Create">
+                        <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
                             Submit
                         </button>
                         @endguest
@@ -397,7 +382,7 @@
                     'longitude':position.coords.longitude
                 },
                 success: function (response) {
-
+                    alert("SOS Sened!");
                 },
                 error: function () {
 
@@ -418,7 +403,7 @@
                 userid: id,
                 status:0
             }).then(function(docRef) {
-
+                alert("Complaint Sended!")
             }).catch(function(error) {
 
             });
@@ -439,13 +424,13 @@
                     'type':position.coords.longitude
                 },
                 success: function (response) {
-
                 },
                 error: function () {
 
                 }
             });
         }
+
     }
 
 </script>
