@@ -32,6 +32,8 @@ Route::get('/admin/user/edit', function () {
 Route::get('/admin/complaint/list', function () {
     return view('admin.complaint.list');
 });
+
+Route::resource('/admin/notice', 'NoticeController');
 //client
 Route::post('/help', 'HelpController@store');
 Route::resource('/complaints', 'ComplaintsController');
