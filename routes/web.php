@@ -19,15 +19,23 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //admin
-Route::resource('admin/account', 'AccountController');
 Route::get('/admin/home', function () {
     return view('admin.home');
 });
 
+Route::get('/admin/user/list', function () {
+    return view('admin.user.list');
+});
+Route::get('/admin/user/edit', function () {
+    return view('admin.user.form');
+});
+Route::get('/admin/complaint/list', function () {
+    return view('admin.complaint.list');
+});
 //client
 Route::post('/help', 'HelpController@store');
 Route::resource('client/complaints', 'ComplaintsController');
 
 Route::get('/test',function (){
-    return "day la trang test";
+    return "";
 });
