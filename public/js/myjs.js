@@ -82,6 +82,7 @@ function doPostComplaints(id) {
 
         });
 
+
         $.ajaxSetup({
             beforeSend: function() {
                 $('#loadingDiv').hide();
@@ -108,7 +109,7 @@ function doPostComplaints(id) {
                 'type': position.coords.longitude
             },
             success: function (response) {
-                // $('#btn-close-test').click()
+
             },
             error: function () {
 
@@ -117,4 +118,5 @@ function doPostComplaints(id) {
     }
 
 }
+
 

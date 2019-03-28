@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="./img/core-img/logo-short-cut.png">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -34,6 +34,7 @@
             padding:20px;
             text-align:center;
         }
+
         .thank-you-pop img{
             width:76px;
             height:auto;
@@ -67,6 +68,38 @@
             color:#fff;
         }
 
+
+        .feature {
+            padding-top: 10px;
+        }
+        .feature-item{
+            display: inline;
+            padding: 0 15px;
+        }
+        .noti li {
+            border-bottom: 1px #92C800 solid;
+            padding: 0 5px;
+        }
+        .complaint-btn {
+            border: 1px #92C800 solid;
+        }
+        .complaint-btn:hover {
+            color: white;
+            background-color: #92C800;
+        }
+        @media  only screen and (max-width: 1200px) {
+            .feature-item {
+                display: inline;
+                padding: 0 5px;
+            }
+        }
+        @media  only screen and (max-width: 786px) {
+            .nav-brand img{
+                display: none;
+            }
+        }
+        @media  only screen and (max-width: 420px) {
+        }
     </style>
 
 </head>
@@ -109,9 +142,15 @@
                                 src="{{asset('img/core-img/logocut.png')}}" alt=""></a>
 
                     <!-- Navbar Toggler -->
+
                     <div class="classy-navbar-toggler">
                         <span class="navbarToggler"><span></span><span></span><span></span></span>
                     </div>
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/home"><img src="http://127.0.0.1:8000/img/core-img/logo-1.png"
+                                                           alt=""></a>
+
+                    <!-- Navbar Toggler -->
 
                     <!-- Menu -->
                     <div class="classy-menu">
@@ -123,8 +162,9 @@
                         <div class="classynav">
                             <ul id="nav" style="font-size:45px;">
                                 <li class="active"><a href="/home">Home</a></li>
-                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/contact">Contact Us</a></li>
                                 <li><a href="/about">About Us</a></li>
+
 
                                 @guest
                                 @else
@@ -140,28 +180,61 @@
                             </ul>
 
                             <!-- Contact btn -->
-                            @guest
-                                <li class="dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                    @guest
+                        <ul class="feature">
+                            <li class="dropdown feature-item">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Account<span class="caret"></span>
+                                </a>
+
+                                <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right"
+                                     aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" style="color: #92C800;"
+                                       href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                                    @if (Route::has('register'))
+                                        <a class="dropdown-item" style="color: #92C800;"
+                                           href="{{ route('register') }}">{{ __('Sign Up') }}</a>
+                                    @endif
+                                </div>
+                            </li>
+                            @else
+                                <li class="feature-item">
+                                    <a id="notiDropdown" class="nav-link" href="#"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Account<span class="caret"></span>
+                                        <i class="fa fa-bell"></i>
                                     </a>
 
-                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right"
-                                         aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" style="color: #92C800;"
-                                           href="{{ route('login') }}">{{ __('Sign In') }}</a>
-                                        @if (Route::has('register'))
-                                            <a class="dropdown-item" style="color: #92C800;"
-                                               href="{{ route('register') }}">{{ __('Sign Up') }}</a>
-                                        @endif
+                                    <div style="border: 1px #92C800 solid; width: 300px; " class="dropdown-menu dropdown-menu-right"
+                                         aria-labelledby="notiDropdown">
+                                        <ul class="noti">
+
+
+                                            <li>Get started with Bootstrap, the world’s most popular framework for
+                                                building responsive, mobile-first sites, with BootstrapCDN and a
+                                                template starter page</li>
+                                            <li>Get started with Bootstrap, the world’s most popular framework for
+                                                building responsive, mobile-first sites, with BootstrapCDN and a
+                                                template starter page</li>
+
+                                            <li><a href="">View more</a></li>
+                                        </ul>
                                     </div>
                                 </li>
-                            @else
-                                <div class="contact-btn">
-                                    <a href="#" data-target="#complaintModal" data-toggle="modal">Complaint</a>
-                                </div>
-                                <li class="dropdown">
+                                <li class="feature-item">
+                                    <a class="btn help-btn" onclick="doPostHelps(4)"
+                                       style="width:70px; color: white;box-shadow: 2px 2px 10px 1px red;background-color: red;border-color: red;text-decoration: none;">
+                                        SOS
+                                    </a>
+                                </li>
+                                <li class="feature-item">
+                                    <a class="complaint-btn btn" style="color: black;" href="#" data-target="#complaintModal" data-toggle="modal">Complaint</a>
+                                </li>
+                                <li class="dropdown feature-item">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
@@ -181,37 +254,31 @@
                                         </form>
                                     </div>
                                 </li>
-                            @endguest
-                        </div>
-                        <!-- Nav End -->
-                    </div>
+                        </ul>
+                    @endguest
                 </nav>
             </div>
         </div>
     </div>
 </header>
-@guest
-@else
-
-@endguest
-
 @section('content')
 @show()
-
 <div class="modal fade" id="complaintModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="exampleModalLabel1">What is your traffic problem?</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
             <div class="modal-body">
+
                 <form action="" method="post">
                     <select class="mdb-select md-form" id="type" name="type">
+
                         <option value="jam">Traffic Jam</option>
                         <option value="accident">Accident</option>
                         <option value="disaster">Disaster</option>
@@ -231,8 +298,10 @@
                         </button>
                         @guest
                         @else
+
                             <button onclick="doPostComplaints({{ Auth::user()->id }})" type="button" class="btn"
                                     name="btn-create" value="Create">
+
                                 Submit
                             </button>
                         @endguest
@@ -242,6 +311,15 @@
         </div>
     </div>
 </div>
+@guest
+@else
+
+@endguest
+
+@section('content')
+@show()
+
+
 
 <div class="modal fade" id="ignismyModal" role="dialog">
     <div class="modal-dialog">
