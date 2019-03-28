@@ -183,16 +183,7 @@
             <div id="loadingDiv">
                 Dang load ne
             </div>
-            <script>
-                $('#loadingDiv')
-                    .hide()  // Hide it initially
-                    .ajaxStart(function() {
-                        $(this).show();
-                    })
-                    .ajaxStop(function() {
-                        $(this).hide();
-                    })
-                ;</script>
+
             <div class="modal-body">
                 <form action="" method="post">
                     <select  class="mdb-select md-form" id="type" name="type" >
