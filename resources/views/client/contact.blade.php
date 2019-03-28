@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends('layouts.app',['page_title'=>'Contact Us'])
 @section('content')
     <!-- *** Breadcrumb Area Start *** -->
     <div class="breadcrumb-area bg-img bg-overlay-3 wow fadeInUp" data-wow-delay="200ms"

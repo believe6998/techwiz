@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['page_title'=>'Smart Traffic'])
 
 @section('content')
     <style>
@@ -256,7 +256,7 @@
     </section>
     <!-- *** Choose Us Area End *** -->
     <section class="rehome-call-to-action-area bg-overlay bg-img jarallax section-padding-100"
-             style="background-image: url(img/core-img/asd.png);">
+             style="background-image: url({{asset('img/bg-img/34.jpg')}});">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-7">

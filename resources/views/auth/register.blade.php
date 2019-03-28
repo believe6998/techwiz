@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['page_title'=>'Resgister'])
 
 @section('content')
     <style>
