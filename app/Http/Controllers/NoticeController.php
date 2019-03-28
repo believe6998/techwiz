@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Notice;
+use Auth;
 use Illuminate\Http\Request;
 
 class NoticeController extends Controller
@@ -14,7 +15,8 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        //
+        $notices = Notice::all();
+        return view('admin.notice.list-notice', compact('notices'));
     }
 
     /**
@@ -24,7 +26,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.notice.form-notice');
     }
 
     /**
@@ -35,7 +37,13 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userid = Auth::user()->id;
+        $notice = new Notice();
+        $notice->address = $request->get('address');
+        $notice->description = $request->get('description');
+        $notice->userid = $userid;
+        $notice->save();
+        return redirect('/admin/notice')->with('success', 'Stock has been added');
     }
 
     /**
