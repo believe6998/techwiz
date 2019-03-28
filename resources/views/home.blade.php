@@ -17,7 +17,6 @@
     </div>
 
     <script>
-        var markerMap ={};
 
         var config = {
             apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
@@ -29,8 +28,9 @@
         };
         firebase.initializeApp(config);
         var db = firebase.firestore();
+        var markerMap ={};
 
-        function test(id) {
+        function deleteMarker(id) {
             db.collection("complaints").doc(id).delete().then(function () {
             }).catch(function (error) {
                 console.error("Error removing document: ", error);
@@ -46,10 +46,16 @@
 
         }
 
+
+        function clearMarker() {
+            markerMap.forEach(function (marker) {
+                marker.setMap(null)
+            })
+        }
         function initMap() {
             // Map options
-            
-            var styleArray =[
+
+            var styleArray = [
                 {
                     "featureType": "poi",
                     "elementType": "labels.text",
@@ -85,6 +91,7 @@
                     ]
                 }
             ];
+
             var options = {
                 zoom: 15,
                 center: {lat: 21.0288722, lng: 105.7795577},
@@ -105,6 +112,7 @@
                 },
                 fullscreenControl: true
             };
+
             var map = new google.maps.Map(document.getElementById('map'), options);
 
             var images = {
@@ -131,23 +139,29 @@
                     }
             };
 
+            var markerMap = {};
+
+
             // Add Marker Function
-            function addMarker(doc,id) {
+            function addMarker(doc, id) {
+
                 var marker = new google.maps.Marker({
                     position: {lat: parseFloat(doc.latitude), lng: parseFloat(doc.longitude)},
                     map: map,
                 });
 
-                markerMap[id]=marker;
+                markerMap[id] = marker;
+
+
                 // Check for customicon
 
                 if (doc.type === "jam") {
                     marker.setIcon(images.jam);
-                }else if(doc.type === "accident"){
+                } else if (doc.type === "accident") {
                     marker.setIcon(images.accident)
-                }else if(doc.type === "disaster"){
+                } else if (doc.type === "disaster") {
                     marker.setIcon(images.disaster)
-                }else if(doc.type === undefined){
+                } else if (doc.type === undefined) {
                     marker.setIcon({
                         url: 'http://www.jamiekatzpetdetective.com/stick_figure_help_button_500_clr_9911.gif',
                         scaledSize: new google.maps.Size(50, 50),
@@ -159,9 +173,9 @@
                 var contentString = '<div id="content">' +
                     '<div id="siteNotice">' +
                     '</div>' +
-                    '<h1>'+doc.title+'</h1>' +
+                    '<h1>' + doc.title + '</h1>' +
                     '<div id="bodyContent">' +
-                    '<button onclick="test(\'' + id + '\')">xoa</button>' +
+                    '<button onclick="deleteMarker(\'' + id + '\')">xoa</button>' +
                     '</button>' +
                     '</div>';
                 var infowindow = new google.maps.InfoWindow({
@@ -174,16 +188,18 @@
             }
 
             db.collection("complaints").onSnapshot(function (querySnapshot) {
+                clearMarker();
                 querySnapshot.forEach(function (doc) {
-                    addMarker(doc.data(),doc.id)
+                    addMarker(doc.data(), doc.id)
                 });
             }, function (error) {
                 console.log("loi" + error)
             });
 
             db.collection("helps").onSnapshot(function (querySnapshot) {
+                clearMarker();
                 querySnapshot.forEach(function (doc) {
-                    addMarker(doc.data(),doc.id)
+                    addMarker(doc.data(), doc.id)
                 });
             }, function (error) {
                 console.log("loi" + error)
@@ -279,7 +295,8 @@
                             <i class="icon_creditcard"></i>
                         </div>
                         <h5>Save Your Money And Time</h5>
-                        <p>Traffic jams, wasting time on the road and monthly gas money will no longer be your fear. </p>
+                        <p>Traffic jams, wasting time on the road and monthly gas money will no longer be your
+                            fear. </p>
                     </div>
                 </div>
 
