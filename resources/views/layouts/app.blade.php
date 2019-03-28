@@ -20,7 +20,7 @@
     <link href="{{ asset('/css/mystyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
-        #navbarDropdown:hover{
+        #navbarDropdown:hover {
             color: #92C800;
         }
     </style>
@@ -35,6 +35,7 @@
             height: 92vh;
             width: 100%;
         }
+
         .floating-panel {
             position: absolute;
             top: 20px;
@@ -44,10 +45,11 @@
             padding: 5px;
             border: 1px solid #999;
             text-align: center;
-            font-family: 'Roboto','sans-serif';
+            font-family: 'Roboto', 'sans-serif';
             line-height: 30px;
             padding-left: 10px;
         }
+
         .floating-panel {
             margin-left: -52px;
         }
@@ -89,7 +91,8 @@
                 <nav class="classy-navbar justify-content-between" id="rehomesNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="./index.html"><img src="{{asset('/img/core-img/logo-1.png')}}" alt=""></a>
+                    <a class="nav-brand" href="/home"><img src="{{asset('/img/core-img/logo-1.png')}}"
+                                                                  alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -105,37 +108,53 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul id="nav" style="font-size:45px;">
-                                <li class="active"><a href="./index.html">Home</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./blog.html">Blog</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
+                                <li class="active"><a href="/home">Home</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="">
+                                        <button  onclick="doPostHelps({{ Auth::user()->id }})" style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
+                                            SOS
+                                        </button>
+                                    </a>
                                 </li>
-                                <li><a href="./about.html">About Us</a></li>
-                                <li><a href="#">Notification</a></li>
                             </ul>
 
                             <!-- Contact btn -->
                             @guest
-                                <li class="contact-btn"><a href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
-                                @if (Route::has('register'))
-                                    <li class="contact-btn"><a href="{{ route('register') }}">{{ __('Sign Up') }}</a></li>
-                                @endif
+                                <li class="dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Account<span class="caret"></span>
+                                    </a>
+
+                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right"
+                                         aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" style="color: #92C800;"
+                                           href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                                        @if (Route::has('register'))
+                                            <a class="dropdown-item" style="color: #92C800;"
+                                               href="{{ route('register') }}">{{ __('Sign Up') }}</a>
+
+                                        @endif
+                                    </div>
+                                </li>
                             @else
                                 <li class="dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
 
-                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right"
+                                         aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" style="color: #92C800;" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
                                             @csrf
                                         </form>
                                     </div>
@@ -150,15 +169,15 @@
     </div>
 </header>
 @guest
-    @else
+@else
 
-    @endguest
+@endguest
 
 @section('content')
 @show()
 <!-- **** Footer Area Start **** -->
 <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
-        style="background-image: url({{asset('/img/bg-img/17.jpg')}});">
+        style="background-image: url({{asset('/img/bg-img/image_2019_03_27T06_31_58_130Z.png')}});">
     <!-- Main Footer Area -->
     <div class="main-footer-area">
         <div class="container">
@@ -168,7 +187,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-footer-widget mb-80">
                         <!-- Footer Logo -->
-                        <a href="#" class="footer-logo"><img src="{{asset('/img/core-img/logo-1.png')}}" alt=""></a>
+                        <a href="#" class="footer-logo"><img src="{{asset('/img/core-img/lgf.png')}}" alt=""></a>
 
                         <p>An traffic app helps and answers your questions wherever you are.</p>
                         <!-- Social Info -->
@@ -191,7 +210,8 @@
                         <div class="footer-contact">
                             <p>Phone: <span>0945549999</span></p>
                             <p>Email: <span>t1808a@fpt.edu.vn</span></p>
-                            <p>Address: <span>8 Ton That Thuyet Street, Cau Giay District, Ha Noi City, VietNam.</span></p>
+                            <p>Address: <span>8 Ton That Thuyet Street, Cau Giay District, Ha Noi City, VietNam.</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -227,7 +247,7 @@
 
                         <p>Subscribe our newsletter gor get notification about new updates, count, etc.</p>
                         <!-- Newsletter Form -->
-                        <form action="index.html" class="nl-form">
+                        <form action="" class="nl-form">
                             <input type="email" name="nl-email" class="form-control"
                                    placeholder="Enter your email...">
                             <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
@@ -285,7 +305,100 @@
 <!-- Active -->
 <script src="{{asset('/js/default-assets/active.js')}}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
+<script>
+    // Cấu Hình filebase
+    var config = {
+        apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
+        authDomain: "hello-firebase-2019001.firebaseapp.com",
+        databaseURL: "https://hello-firebase-2019001.firebaseio.com",
+        projectId: "hello-firebase-2019001",
+        storageBucket: "hello-firebase-2019001.appspot.com",
+        messagingSenderId: "463492007629"
+    };
+    firebase.initializeApp(config);
+    var db = firebase.firestore();
 
+    function doPostHelps(id){
+
+        navigator.geolocation.getCurrentPosition(showPosition);
+        function showPosition(position) {
+            db.collection("helps").add({
+                longitude: position.coords.longitude,
+                latitude: position.coords.latitude,
+                userid: id,
+                status:0
+            }).then(function(docRef) {
+
+            }).catch(function(error) {
+                alert("Error adding document: ", error);
+            });
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                'url': '/help',
+                'method': 'POST',
+                'data':{
+                    'latitude':position.coords.latitude,
+                    'longitude':position.coords.longitude
+                },
+                success: function (response) {
+                    alert("ok")
+                },
+                error: function () {
+                    alert("k ok")
+                }
+            });
+        }
+    }
+
+    function doPostComplaints(id){
+
+        navigator.geolocation.getCurrentPosition(showPosition);
+        function showPosition(position) {
+            db.collection("complaints").add({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                title: $("#title").val(),
+                type: $("#type").val(),
+                userid: id,
+                status:0
+            }).then(function(docRef) {
+                alert("filebase ok ");
+            }).catch(function(error) {
+                alert("Error adding document: ", error);
+            });
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                'url': '/client/complaints',
+                'method': 'POST',
+                'data':{
+                    'latitude':position.coords.latitude,
+                    'longitude':position.coords.longitude,
+                    'title':position.coords.longitude,
+                    'type':position.coords.longitude
+                },
+                success: function (response) {
+                    alert("mysql ok")
+                },
+                error: function () {
+                    alert("k ok")
+                }
+            });
+        }
+    }
+
+</script>
 
 </body>
 </html>
