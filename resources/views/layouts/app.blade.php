@@ -111,14 +111,15 @@
                                 <li class="active"><a href="/home">Home</a></li>
                                 <li><a href="/contact">Contact</a></li>
                                 <li><a href="/about">About Us</a></li>
+                                @guest
+                                @else
                                 <li><a>
                                         <button  onclick="doPostHelps({{ Auth::user()->id }})" style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
                                             SOS
                                         </button>
                                     </a>
-
-
                                 </li>
+                                @endguest
                             </ul>
 
                             <!-- Contact btn -->
@@ -211,9 +212,12 @@
                         <button type="reset" class="btn" name="btn-reset" value="Reset">
                             Reset
                         </button>
+                        @guest
+                        @else
                         <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="submit" class="btn" name="btn-create" value="Create">
                             Submit
                         </button>
+                        @endguest
                     </div>
                 </form>
             </div>
