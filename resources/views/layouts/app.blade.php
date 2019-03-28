@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="./img/core-img/logo-short-cut.png">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -20,6 +20,7 @@
     <link href="{{ asset('/css/mystyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <style>
         #navbarDropdown:hover {
             color: #92C800;
@@ -30,14 +31,37 @@
             padding: 0;
             margin: 0;
         }
-
-
-        #map {
-            height: 92vh;
-            width: 100%;
+        .feature {
+            padding-top: 10px;
         }
-
-
+        .feature-item{
+            display: inline;
+            padding: 0 15px;
+        }
+        .noti li {
+            border-bottom: 1px #92C800 solid;
+            padding: 0 5px;
+        }
+        .complaint-btn {
+            border: 1px #92C800 solid;
+        }
+        .complaint-btn:hover {
+            color: white;
+            background-color: #92C800;
+        }
+        @media  only screen and (max-width: 1200px) {
+            .feature-item {
+                display: inline;
+                padding: 0 5px;
+            }
+        }
+        @media  only screen and (max-width: 786px) {
+            .nav-brand img{
+                display: none;
+            }
+        }
+        @media  only screen and (max-width: 420px) {
+        }
     </style>
 </head>
 <body>
@@ -74,15 +98,14 @@
             <div class="container">
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="rehomesNav">
-
-                    <!-- Logo -->
-                    <a class="nav-brand" href="/home"><img src="{{asset('/img/core-img/logo-1.png')}}"
-                                                                  alt=""></a>
-
-                    <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
                         <span class="navbarToggler"><span></span><span></span><span></span></span>
                     </div>
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/home"><img src="http://127.0.0.1:8000/img/core-img/logo-1.png"
+                                                           alt=""></a>
+
+                    <!-- Navbar Toggler -->
 
                     <!-- Menu -->
                     <div class="classy-menu">
@@ -94,44 +117,66 @@
                         <div class="classynav">
                             <ul id="nav" style="font-size:45px;">
                                 <li class="active"><a href="/home">Home</a></li>
-                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/contact">Contact Us</a></li>
                                 <li><a href="/about">About Us</a></li>
-                                @guest
-                                @else
-                                <li>
-                                    <a>
-                                        <button  onclick="doPostHelps({{ Auth::user()->id }})" style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
-                                            SOS
-                                        </button>
-                                    </a>
-                                </li>
-                                @endguest
                             </ul>
 
                             <!-- Contact btn -->
-                            @guest
-                                <li class="dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                    @guest
+                        <ul class="feature">
+                            <li class="dropdown feature-item">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Account<span class="caret"></span>
+                                </a>
+
+                                <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right"
+                                     aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" style="color: #92C800;"
+                                       href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                                    @if (Route::has('register'))
+                                        <a class="dropdown-item" style="color: #92C800;"
+                                           href="{{ route('register') }}">{{ __('Sign Up') }}</a>
+                                    @endif
+                                </div>
+                            </li>
+                            @else
+                                <li class="feature-item">
+                                    <a id="notiDropdown" class="nav-link" href="#"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Account<span class="caret"></span>
+                                        <i class="fa fa-bell"></i>
                                     </a>
 
-                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right"
-                                         aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" style="color: #92C800;"
-                                           href="{{ route('login') }}">{{ __('Sign In') }}</a>
-                                        @if (Route::has('register'))
-                                            <a class="dropdown-item" style="color: #92C800;"
-                                               href="{{ route('register') }}">{{ __('Sign Up') }}</a>
+                                    <div style="border: 1px #92C800 solid; width: 300px; " class="dropdown-menu dropdown-menu-right"
+                                         aria-labelledby="notiDropdown">
+                                        <ul class="noti">
 
-                                        @endif
+
+                                            <li>Get started with Bootstrap, the world’s most popular framework for
+                                                building responsive, mobile-first sites, with BootstrapCDN and a
+                                                template starter page</li>
+                                            <li>Get started with Bootstrap, the world’s most popular framework for
+                                                building responsive, mobile-first sites, with BootstrapCDN and a
+                                                template starter page</li>
+
+                                            <li><a href="">View more</a></li>
+                                        </ul>
                                     </div>
                                 </li>
-                            @else
-                                <div class="contact-btn">
-                                    <a href="#" data-target="#complaintModal" data-toggle="modal">Complaint</a>
-                                </div>
-                                <li class="dropdown">
+                                <li class="feature-item">
+                                    <a class="btn help-btn" onclick="doPostHelps(4)"
+                                       style="width:70px; color: white;box-shadow: 2px 2px 10px 1px red;background-color: red;border-color: red;text-decoration: none;">
+                                        SOS
+                                    </a>
+                                </li>
+                                <li class="feature-item">
+                                    <a class="complaint-btn btn" style="color: black;" href="#" data-target="#complaintModal" data-toggle="modal">Complaint</a>
+                                </li>
+                                <li class="dropdown feature-item">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
@@ -151,35 +196,27 @@
                                         </form>
                                     </div>
                                 </li>
-                            @endguest
-                        </div>
-                        <!-- Nav End -->
-                    </div>
+                        </ul>
+                    @endguest
                 </nav>
             </div>
         </div>
     </div>
 </header>
-@guest
-@else
-
-@endguest
-
 @section('content')
 @show()
-
 <div class="modal fade" id="complaintModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="exampleModalLabel1">What is your traffic problem?</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="" method="post" id="complaint-form">
                     <select  class="mdb-select md-form" id="type" name="type" >
                         <option value="jam">Traffic Jam</option>
                         <option value="accident">Accident</option>
@@ -200,9 +237,9 @@
                         </button>
                         @guest
                         @else
-                        <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
-                            Submit
-                        </button>
+                            <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
+                                Submit
+                            </button>
                         @endguest
                     </div>
                 </form>
@@ -210,6 +247,15 @@
         </div>
     </div>
 </div>
+@guest
+@else
+
+@endguest
+
+@section('content')
+@show()
+
+
 
 <!-- **** Footer Area Start **** -->
 <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
@@ -341,100 +387,8 @@
 <!-- Active -->
 <script src="{{asset('/js/default-assets/active.js')}}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
-<script>
-    // Cấu Hình filebase
-    var config = {
-        apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
-        authDomain: "hello-firebase-2019001.firebaseapp.com",
-        databaseURL: "https://hello-firebase-2019001.firebaseio.com",
-        projectId: "hello-firebase-2019001",
-        storageBucket: "hello-firebase-2019001.appspot.com",
-        messagingSenderId: "463492007629"
-    };
-    firebase.initializeApp(config);
-    var db = firebase.firestore();
+<script src="{{ asset('js/myjs.js') }}" defer></script>
 
-    function doPostHelps(id){
-
-        navigator.geolocation.getCurrentPosition(showPosition);
-        function showPosition(position) {
-            db.collection("helps").add({
-                longitude: position.coords.longitude,
-                latitude: position.coords.latitude,
-                userid: id,
-                status:0
-            }).then(function(docRef) {
-
-            }).catch(function(error) {
-                alert("Error adding document: ", error);
-            });
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                'url': '/help',
-                'method': 'POST',
-                'data':{
-                    'latitude':position.coords.latitude,
-                    'longitude':position.coords.longitude
-                },
-                success: function (response) {
-                    alert("SOS Sened!");
-                },
-                error: function () {
-
-                }
-            });
-        }
-    }
-
-    function doPostComplaints(id){
-
-        navigator.geolocation.getCurrentPosition(showPosition);
-        function showPosition(position) {
-            db.collection("complaints").add({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-                title: $("#title").val(),
-                type: $("#type").val(),
-                userid: id,
-                status:0
-            }).then(function(docRef) {
-                alert("Complaint Sended!")
-            }).catch(function(error) {
-
-            });
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                'url': '/complaints',
-                'method': 'POST',
-                'data':{
-                    'latitude':position.coords.latitude,
-                    'longitude':position.coords.longitude,
-                    'title':position.coords.longitude,
-                    'type':position.coords.longitude
-                },
-                success: function (response) {
-                },
-                error: function () {
-
-                }
-            });
-        }
-
-    }
-
-</script>
 
 </body>
 </html>

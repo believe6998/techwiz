@@ -16,12 +16,10 @@ Route::get('/', function () {
 });
 //auth
 Auth::routes();
-Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
-//admin
-Route::get('/admin/home', function () {
-    return view('admin.home');
-});
+////admin
+Route::get('/admin', 'AdminController@index')->name('admin.home-admin');
 
 Route::get('/admin/user/list', function () {
     return view('admin.user.list');
@@ -32,6 +30,8 @@ Route::get('/admin/user/edit', function () {
 Route::get('/admin/complaint/list', function () {
     return view('admin.complaint.list');
 });
+
+Route::resource('/admin/notice', 'NoticeController');
 //client
 Route::post('/help', 'HelpController@store');
 Route::resource('/complaints', 'ComplaintsController');
