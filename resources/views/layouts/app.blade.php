@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Smart Traffic') }}</title>
+    <title>{{ $page_title }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('/css/mystyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         #navbarDropdown:hover {
             color: #92C800;
@@ -36,23 +37,7 @@
             width: 100%;
         }
 
-        .floating-panel {
-            position: absolute;
-            top: 20px;
-            left: 5%;
-            z-index: 5;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #999;
-            text-align: center;
-            font-family: 'Roboto', 'sans-serif';
-            line-height: 30px;
-            padding-left: 10px;
-        }
 
-        .floating-panel {
-            margin-left: -52px;
-        }
     </style>
 </head>
 <body>
@@ -111,12 +96,16 @@
                                 <li class="active"><a href="/home">Home</a></li>
                                 <li><a href="/contact">Contact</a></li>
                                 <li><a href="/about">About Us</a></li>
-                                <li><a href="">
+                                @guest
+                                @else
+                                <li>
+                                    <a>
                                         <button  onclick="doPostHelps({{ Auth::user()->id }})" style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
                                             SOS
                                         </button>
                                     </a>
                                 </li>
+                                @endguest
                             </ul>
 
                             <!-- Contact btn -->
@@ -139,6 +128,9 @@
                                     </div>
                                 </li>
                             @else
+                                <div class="contact-btn">
+                                    <a href="#" data-target="#complaintModal" data-toggle="modal">Complaint</a>
+                                </div>
                                 <li class="dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -175,6 +167,50 @@
 
 @section('content')
 @show()
+
+<div class="modal fade" id="complaintModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel1">What is your traffic problem?</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    <select  class="mdb-select md-form" id="type" name="type" >
+                        <option value="jam">Traffic Jam</option>
+                        <option value="accident">Accident</option>
+                        <option value="disaster">Disaster</option>
+                    </select>
+                    <br> &nbsp;
+                    <div class="form-group">
+                        <label for="title">Message</label>
+                        <textarea class="form-control" id="title" placeholder="Enter Your Message" rows="3"></textarea>
+                    </div>
+                    <input type="hidden" name="longitude">
+                    <input type="hidden" name="latitude">
+
+                    <div class="modal-footer">
+                        <label>&nbsp;</label>
+                        <button type="reset" class="btn" name="btn-reset" value="Reset">
+                            Reset
+                        </button>
+                        @guest
+                        @else
+                        <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
+                            Submit
+                        </button>
+                        @endguest
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- **** Footer Area Start **** -->
 <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
         style="background-image: url({{asset('/img/bg-img/image_2019_03_27T06_31_58_130Z.png')}});">
@@ -347,10 +383,10 @@
                     'longitude':position.coords.longitude
                 },
                 success: function (response) {
-                    alert("ok")
+                    alert("SOS Sened!");
                 },
                 error: function () {
-                    alert("k ok")
+
                 }
             });
         }
@@ -368,9 +404,9 @@
                 userid: id,
                 status:0
             }).then(function(docRef) {
-                alert("filebase ok ");
+                alert("Complaint Sended!")
             }).catch(function(error) {
-                alert("Error adding document: ", error);
+
             });
 
             $.ajaxSetup({
@@ -380,7 +416,7 @@
             });
 
             $.ajax({
-                'url': '/client/complaints',
+                'url': '/complaints',
                 'method': 'POST',
                 'data':{
                     'latitude':position.coords.latitude,
@@ -389,13 +425,13 @@
                     'type':position.coords.longitude
                 },
                 success: function (response) {
-                    alert("mysql ok")
                 },
                 error: function () {
-                    alert("k ok")
+
                 }
             });
         }
+
     }
 
 </script>

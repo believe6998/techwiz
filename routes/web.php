@@ -36,6 +36,14 @@ Route::get('/admin/complaint/list', function () {
 Route::post('/help', 'HelpController@store');
 Route::resource('/complaints', 'ComplaintsController');
 
-Route::get('/test',function (){
+Route::get('/contact', function () {
+    return view('client.contact');
+});
+
+Route::get('/about', function () {
+    return view('client.about');
+});
+
+Route::get('/test', function () {
     return "";
 });
