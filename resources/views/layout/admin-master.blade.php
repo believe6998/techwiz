@@ -11,28 +11,28 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="{{asset('/admin/css/bootstrap.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('/admin-assets/css/bootstrap.min.css')}}" rel="stylesheet"/>
 
     <!-- Animation library for notifications   -->
-    <link href="{{asset('/admin/css/animate.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('/admin-assets/css/animate.min.css')}}" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="{{asset('/admin/css/light-bootstrap-dashboard.css?v=1.4.0')}}" rel="stylesheet"/>
+    <link href="{{asset('/admin-assets/css/light-bootstrap-dashboard.css?v=1.4.0')}}" rel="stylesheet"/>
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="{{asset('/admin/css/demo.css')}}" rel="stylesheet"/>
+    <link href="{{asset('/admin-assets/css/demo.css')}}" rel="stylesheet"/>
 
 
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="{{asset('/css/css/font-awesome.min.css')}}">
     {{--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">--}}
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="{{asset('/admin/css/pe-icon-7-stroke.css')}}" rel="stylesheet"/>
+    <link href="{{asset('/admin-assets/css/pe-icon-7-stroke.css')}}" rel="stylesheet"/>
 
 
     <!--    Favicon   -->
-    <link rel="icon" href="{{asset('/admin/img/logo-short-cut.png')}}">
+    <link rel="icon" href="{{asset('/admin-assets/img/logo-short-cut.png')}}">
 </head>
 <body>
 <div class="wrapper">
@@ -46,7 +46,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="/admin/user/list">
+                    <a href="/admin-assets/user/list">
                         <i class="pe-7s-user"></i>
                         <p>User</p>
                     </a>
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="/admin/complaint/list">
+                    <a href="/admin-assets/complaint/list">
                         <i class="pe-7s-news-paper"></i>
                         <p>Complaint's User</p>
                     </a>
@@ -178,21 +178,21 @@
 </body>
 
 <!--   Core JS Files   -->
-<script src="{{asset('/admin/js/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('/admin/js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('/admin-assets/js/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('/admin-assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 
 <!--  Charts Plugin -->
-<script src="{{asset('/admin/js/chartist.min.js')}}"></script>
+<script src="{{asset('/admin-assets/js/chartist.min.js')}}"></script>
 
 <!--  Notifications Plugin    -->
-<script src="{{asset('/admin/js/bootstrap-notify.js')}}"></script>
+<script src="{{asset('/admin-assets/js/bootstrap-notify.js')}}"></script>
 
 <!--  Google Maps Plugin    -->
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script src="{{asset('/admin/js/light-bootstrap-dashboard.js?v=1.4.0')}}"></script>
+<script src="{{asset('/admin-assets/js/light-bootstrap-dashboard.js?v=1.4.0')}}"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="{{asset('/admin/js/demo.js')}}"></script>
+<script src="{{asset('/admin-assets/js/demo.js')}}"></script>
 
 </html>
