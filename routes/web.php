@@ -16,12 +16,10 @@ Route::get('/', function () {
 });
 //auth
 Auth::routes();
-Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
-//admin
-Route::get('/admin', function () {
-    return view('admin.home-admin');
-});
+////admin
+Route::get('/admin', 'AdminController@index')->name('admin.home-admin');
 
 Route::get('/admin/user/list', function () {
     return view('admin.user.list');
