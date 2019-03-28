@@ -110,7 +110,7 @@
                         <div class="content">
                             <div class="author">
                                 <a href="#">
-                                    <img class="avatar border-gray" src="{{asset('/admin/img/54435778_111757206658593_819455557936087040_n.jpg')}}" alt="..."/>
+                                    <img class="avatar border-gray" src="{{asset('admin-assets')}}" alt="..."/>
 
                                     <h4 class="title">Trần Thi<br/>
                                         <small>thitran1234</small>
