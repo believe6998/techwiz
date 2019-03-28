@@ -100,7 +100,7 @@
                 });
 
                 $.ajax({
-                    'url': '/client/complaints',
+                    'url': '/complaints',
                     'method': 'POST',
                     'data':{
                         'latitude':position.coords.latitude,

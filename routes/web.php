@@ -11,23 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('wellcome');
-});
-//auth
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-//admin
-Route::resource('admin/account', 'AccountController');
-Route::get('/admin/home', function () {
-    return view('admin.home');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/admin', function () {
+    return view('admin.home-admin');
 });
 
 //client
 Route::post('/help', 'HelpController@store');
-Route::resource('client/complaints', 'ComplaintsController');
+Route::resource('/complaints', 'ComplaintsController');
 
 
