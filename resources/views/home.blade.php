@@ -13,10 +13,12 @@
         }
     </style>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+
     <div id="map" style="height: 80vh">
     </div>
 
     <script>
+        var currentLocation;
 
         var config = {
             apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
@@ -30,7 +32,6 @@
         var db = firebase.firestore();
 
         var markerMap = {};
-
 
         function deleteMarker(id) {
             db.collection("complaints").doc(id).delete().then(function () {
@@ -49,6 +50,14 @@
         }
 
         function initMap() {
+            navigator.geolocation.getCurrentPosition(function (alocation) {
+                currentLocation = {
+                    lat: parseFloat(alocation.coords.latitude),
+                    lng: parseFloat(alocation.coords.longitude)
+                };
+                console.log(currentLocation)
+
+            });
             // Map options
 
             var styleArray = [
@@ -116,22 +125,22 @@
                     {
                         url: 'https://www.tycoifs.ca/wps/wcm/connect/61557331-2b17-4237-a6fe-e77ecdf8dbbb/pulse12.gif?MOD=AJPERES&CACHEID=ROOTWORKSPACE-61557331-2b17-4237-a6fe-e77ecdf8dbbb-kNcW.Bt',
                         scaledSize: new google.maps.Size(70, 70),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 32)
+                        // origin: new google.maps.Point(0, 0),
+                        // anchor: new google.maps.Point(0, 32)
                     },
                 accident:
                     {
                         url: 'https://hotelmarkovo.bg/en/wp-content/uploads/2018/05/hotelmarkovogreenpulse.gif',
                         scaledSize: new google.maps.Size(70, 70),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 32)
+                        // origin: new google.maps.Point(0, 0),
+                        // anchor: new google.maps.Point(0, 32)
                     },
                 disaster:
                     {
                         url: 'https://iwant2study.org/lookangejss/01_measurement/ejss_model_horizontalverticalquiz01/horizontalvertical/giphy.gif',
                         scaledSize: new google.maps.Size(70, 70),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 32)
+                        // origin: new google.maps.Point(0, 0),
+                        // anchor: new google.maps.Point(0, 32)
                     }
             };
 
@@ -141,7 +150,7 @@
                 var marker = new google.maps.Marker({
                     position: {lat: parseFloat(doc.latitude), lng: parseFloat(doc.longitude)},
                     map: map,
-                    help:help
+                    help: help
                 });
 
                 markerMap[id] = marker;
@@ -177,14 +186,11 @@
                 }
 
 
-
-
-
             }
 
             db.collection("complaints").onSnapshot(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    addMarker(doc.data(), doc.id,false)
+                    addMarker(doc.data(), doc.id, false)
                 });
             }, function (error) {
                 console.log("loi" + error)
@@ -199,6 +205,9 @@
             });
 
         }
+
+        // });
+
     </script>
 
     <script async defer
@@ -247,7 +256,8 @@
                             <i class="icon_creditcard"></i>
                         </div>
                         <h5>Save Your Money And Time</h5>
-                        <p>Traffic jams, wasting time on the road and monthly gas money will no longer be your fear. </p>
+                        <p>Traffic jams, wasting time on the road and monthly gas money will no longer be your
+                            fear. </p>
                     </div>
                 </div>
 
