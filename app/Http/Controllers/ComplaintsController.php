@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Complaints;
 use Illuminate\Http\Request;
-use Google\Cloud\Firestore\FirestoreClient;
 use Auth;
 
 class ComplaintsController extends Controller

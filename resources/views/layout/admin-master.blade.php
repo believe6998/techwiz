@@ -11,12 +11,14 @@
 
 
     <!-- Bootstrap core CSS     -->
+
     <link href="{{asset('/admin-assets/css/bootstrap.min.css')}}" rel="stylesheet"/>
 
     <!-- Animation library for notifications   -->
     <link href="{{asset('/admin-assets/css/animate.min.css')}}" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
+
     <link href="{{asset('/admin-assets/css/light-bootstrap-dashboard.css?v=1.4.0')}}" rel="stylesheet"/>
 
 

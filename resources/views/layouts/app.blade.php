@@ -20,6 +20,8 @@
     <link href="{{ asset('/css/mystyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+
     <style>
         #navbarDropdown:hover {
             color: #92C800;
@@ -75,9 +77,7 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="rehomesNav">
 
-                    <!-- Logo -->
-                    <a class="nav-brand" href="/home"><img src="{{asset('/img/core-img/logo-1.png')}}"
-                                                                  alt=""></a>
+                    <a class="nav-brand" href="/home" style="max-width: 243px"><img src="{{asset('img/core-img/logocut.png')}}" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -123,7 +123,6 @@
                                         @if (Route::has('register'))
                                             <a class="dropdown-item" style="color: #92C800;"
                                                href="{{ route('register') }}">{{ __('Sign Up') }}</a>
-
                                         @endif
                                     </div>
                                 </li>
@@ -341,100 +340,8 @@
 <!-- Active -->
 <script src="{{asset('/js/default-assets/active.js')}}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
-<script>
-    // Cấu Hình filebase
-    var config = {
-        apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
-        authDomain: "hello-firebase-2019001.firebaseapp.com",
-        databaseURL: "https://hello-firebase-2019001.firebaseio.com",
-        projectId: "hello-firebase-2019001",
-        storageBucket: "hello-firebase-2019001.appspot.com",
-        messagingSenderId: "463492007629"
-    };
-    firebase.initializeApp(config);
-    var db = firebase.firestore();
+<script src="{{ asset('js/myjs.js') }}" defer></script>
 
-    function doPostHelps(id){
-
-        navigator.geolocation.getCurrentPosition(showPosition);
-        function showPosition(position) {
-            db.collection("helps").add({
-                longitude: position.coords.longitude,
-                latitude: position.coords.latitude,
-                userid: id,
-                status:0
-            }).then(function(docRef) {
-
-            }).catch(function(error) {
-                alert("Error adding document: ", error);
-            });
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                'url': '/help',
-                'method': 'POST',
-                'data':{
-                    'latitude':position.coords.latitude,
-                    'longitude':position.coords.longitude
-                },
-                success: function (response) {
-                    alert("SOS Sened!");
-                },
-                error: function () {
-
-                }
-            });
-        }
-    }
-
-    function doPostComplaints(id){
-
-        navigator.geolocation.getCurrentPosition(showPosition);
-        function showPosition(position) {
-            db.collection("complaints").add({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-                title: $("#title").val(),
-                type: $("#type").val(),
-                userid: id,
-                status:0
-            }).then(function(docRef) {
-                alert("Complaint Sended!")
-            }).catch(function(error) {
-
-            });
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                'url': '/complaints',
-                'method': 'POST',
-                'data':{
-                    'latitude':position.coords.latitude,
-                    'longitude':position.coords.longitude,
-                    'title':position.coords.longitude,
-                    'type':position.coords.longitude
-                },
-                success: function (response) {
-                },
-                error: function () {
-
-                }
-            });
-        }
-
-    }
-
-</script>
 
 </body>
 </html>

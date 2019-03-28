@@ -18,6 +18,21 @@
     </div>
 
     <script>
+        function formatDate(date) {
+            var monthNames = [
+                "January", "February", "March",
+                "April", "May", "June", "July",
+                "August", "September", "October",
+                "November", "December"
+            ];
+
+            var day = date.getDate();
+            var monthIndex = date.getMonth();
+            var year = date.getFullYear();
+
+            return day + ' ' + monthNames[monthIndex] + ' ' + year;
+        }
+
         var currentLocation;
 
         var config = {
@@ -28,7 +43,11 @@
             storageBucket: "hello-firebase-2019001.appspot.com",
             messagingSenderId: "463492007629"
         };
-        firebase.initializeApp(config);
+
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
+
         var db = firebase.firestore();
 
         var markerMap = {};
@@ -48,6 +67,7 @@
             markerMap[id].setMap(null)
 
         }
+
 
         function initMap() {
             navigator.geolocation.getCurrentPosition(function (alocation) {
@@ -99,6 +119,7 @@
 
             var options = {
                 zoom: 15,
+                minZoom: 13,
                 center: {lat: 21.0288722, lng: 105.7795577},
                 styles: styleArray,
                 mapTypeControl: true,
@@ -118,28 +139,28 @@
                 fullscreenControl: true
             };
 
-            var map = new google.maps.Map(document.getElementById('map'), options);
+            map = new google.maps.Map(document.getElementById('map'), options);
 
             var images = {
                 jam:
                     {
                         url: 'https://www.tycoifs.ca/wps/wcm/connect/61557331-2b17-4237-a6fe-e77ecdf8dbbb/pulse12.gif?MOD=AJPERES&CACHEID=ROOTWORKSPACE-61557331-2b17-4237-a6fe-e77ecdf8dbbb-kNcW.Bt',
                         scaledSize: new google.maps.Size(70, 70),
-                        // origin: new google.maps.Point(0, 0),
+                        origin: new google.maps.Point(0, 0),
                         // anchor: new google.maps.Point(0, 32)
                     },
                 accident:
                     {
                         url: 'https://hotelmarkovo.bg/en/wp-content/uploads/2018/05/hotelmarkovogreenpulse.gif',
                         scaledSize: new google.maps.Size(70, 70),
-                        // origin: new google.maps.Point(0, 0),
+                        origin: new google.maps.Point(0, 0),
                         // anchor: new google.maps.Point(0, 32)
                     },
                 disaster:
                     {
                         url: 'https://iwant2study.org/lookangejss/01_measurement/ejss_model_horizontalverticalquiz01/horizontalvertical/giphy.gif',
                         scaledSize: new google.maps.Size(70, 70),
-                        // origin: new google.maps.Point(0, 0),
+                        origin: new google.maps.Point(0, 0),
                         // anchor: new google.maps.Point(0, 32)
                     }
             };
@@ -176,6 +197,7 @@
                         '<div id="content">' +
                         '<h3>' + doc.type + '</h3>' +
                         '<h6>' + doc.title + '</h6>' +
+                        '<span>' +  moment(doc.time.toDate()).fromNow() + '</span>' +
                         '</div>';
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
