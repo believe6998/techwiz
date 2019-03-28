@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $page_title }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,10 +19,27 @@
     <!-- Styles -->
     <link href="{{ asset('/css/mystyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+
     <style>
-        #navbarDropdown.hover{
+        #navbarDropdown:hover {
             color: #92C800;
         }
+    </style>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        #map {
+            height: 92vh;
+            width: 100%;
+        }
+
+
     </style>
 </head>
 <body>
@@ -60,8 +77,7 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="rehomesNav">
 
-                    <!-- Logo -->
-                    <a class="nav-brand" href="./index.html"><img src="{{asset('/img/core-img/logo-1.png')}}" alt=""></a>
+                    <a class="nav-brand" href="/home" style="max-width: 243px"><img src="{{asset('img/core-img/logocut.png')}}" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -77,37 +93,59 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul id="nav" style="font-size:45px;">
-                                <li class="active"><a href="./index.html">Home</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./blog.html">Blog</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
+                                <li class="active"><a href="/home">Home</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                @guest
+                                @else
+                                <li>
+                                    <a>
+                                        <button  onclick="doPostHelps({{ Auth::user()->id }})" style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
+                                            SOS
+                                        </button>
+                                    </a>
                                 </li>
-                                <li><a href="./about.html">About Us</a></li>
-                                <li><a href="#">Notification</a></li>
+                                @endguest
                             </ul>
 
                             <!-- Contact btn -->
                             @guest
-                                <li class="contact-btn"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                                @if (Route::has('register'))
-                                    <li class="contact-btn"><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                                @endif
-                            @else
                                 <li class="dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Account<span class="caret"></span>
+                                    </a>
+
+                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right"
+                                         aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" style="color: #92C800;"
+                                           href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                                        @if (Route::has('register'))
+                                            <a class="dropdown-item" style="color: #92C800;"
+                                               href="{{ route('register') }}">{{ __('Sign Up') }}</a>
+                                        @endif
+                                    </div>
+                                </li>
+                            @else
+                                <div class="contact-btn">
+                                    <a href="#" data-target="#complaintModal" data-toggle="modal">Complaint</a>
+                                </div>
+                                <li class="dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
 
-                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div style="border: 1px #92C800 solid;" class="dropdown-menu dropdown-menu-right"
+                                         aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" style="color: #92C800;" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
                                             @csrf
                                         </form>
                                     </div>
@@ -121,11 +159,60 @@
         </div>
     </div>
 </header>
+@guest
+@else
+
+@endguest
+
 @section('content')
 @show()
+
+<div class="modal fade" id="complaintModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel1">What is your traffic problem?</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    <select  class="mdb-select md-form" id="type" name="type" >
+                        <option value="jam">Traffic Jam</option>
+                        <option value="accident">Accident</option>
+                        <option value="disaster">Disaster</option>
+                    </select>
+                    <br> &nbsp;
+                    <div class="form-group">
+                        <label for="title">Message</label>
+                        <textarea class="form-control" id="title" placeholder="Enter Your Message" rows="3"></textarea>
+                    </div>
+                    <input type="hidden" name="longitude">
+                    <input type="hidden" name="latitude">
+
+                    <div class="modal-footer">
+                        <label>&nbsp;</label>
+                        <button type="reset" class="btn" name="btn-reset" value="Reset">
+                            Reset
+                        </button>
+                        @guest
+                        @else
+                        <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
+                            Submit
+                        </button>
+                        @endguest
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- **** Footer Area Start **** -->
 <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
-        style="background-image: url({{asset('/img/bg-img/17.jpg')}});">
+        style="background-image: url({{asset('/img/bg-img/image_2019_03_27T06_31_58_130Z.png')}});">
     <!-- Main Footer Area -->
     <div class="main-footer-area">
         <div class="container">
@@ -135,7 +222,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-footer-widget mb-80">
                         <!-- Footer Logo -->
-                        <a href="#" class="footer-logo"><img src="{{asset('/img/core-img/logo-1.png')}}" alt=""></a>
+                        <a href="#" class="footer-logo"><img src="{{asset('/img/core-img/lgf.png')}}" alt=""></a>
 
                         <p>An traffic app helps and answers your questions wherever you are.</p>
                         <!-- Social Info -->
@@ -158,7 +245,8 @@
                         <div class="footer-contact">
                             <p>Phone: <span>0945549999</span></p>
                             <p>Email: <span>t1808a@fpt.edu.vn</span></p>
-                            <p>Address: <span>8 Ton That Thuyet Street, Cau Giay District, Ha Noi City, VietNam.</span></p>
+                            <p>Address: <span>8 Ton That Thuyet Street, Cau Giay District, Ha Noi City, VietNam.</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -194,7 +282,7 @@
 
                         <p>Subscribe our newsletter gor get notification about new updates, count, etc.</p>
                         <!-- Newsletter Form -->
-                        <form action="index.html" class="nl-form">
+                        <form action="" class="nl-form">
                             <input type="email" name="nl-email" class="form-control"
                                    placeholder="Enter your email...">
                             <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
@@ -252,6 +340,7 @@
 <!-- Active -->
 <script src="{{asset('/js/default-assets/active.js')}}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/myjs.js') }}" defer></script>
 
 
 </body>
