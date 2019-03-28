@@ -21,6 +21,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+
 
     <style>
         #navbarDropdown:hover {
@@ -96,6 +98,7 @@
                                 <li class="active"><a href="/home">Home</a></li>
                                 <li><a href="/contact">Contact</a></li>
                                 <li><a href="/about">About Us</a></li>
+
                                 @guest
                                 @else
                                 <li>
@@ -177,6 +180,19 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <div id="loadingDiv">
+                Dang load ne
+            </div>
+            <script>
+                $('#loadingDiv')
+                    .hide()  // Hide it initially
+                    .ajaxStart(function() {
+                        $(this).show();
+                    })
+                    .ajaxStop(function() {
+                        $(this).hide();
+                    })
+                ;</script>
             <div class="modal-body">
                 <form action="" method="post">
                     <select  class="mdb-select md-form" id="type" name="type" >
@@ -341,7 +357,5 @@
 <script src="{{asset('/js/default-assets/active.js')}}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('js/myjs.js') }}" defer></script>
-
-
 </body>
 </html>
