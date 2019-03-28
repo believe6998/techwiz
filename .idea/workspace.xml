@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+
     <component name="ChangeListManager">
         <list default="true" id="00926d91-4bea-42c0-908c-cf79432b263c" name="Default" comment="">
             <change afterPath="$PROJECT_DIR$/public/js/myjs.js" afterDir="false" />
@@ -1137,4 +1138,5 @@
             </state>
         </states>
     </component>
+
 </project>

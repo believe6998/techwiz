@@ -12,7 +12,6 @@
             width: 100%;
         }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 
     <div id="map" style="height: 80vh">
     </div>

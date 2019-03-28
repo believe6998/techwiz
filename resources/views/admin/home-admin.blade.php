@@ -35,7 +35,7 @@
     <div id="map" style="height: 80vh">
     </div>
     <script>
-        var markerMap ={};
+        var markerMap = {};
 
         var config = {
             apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
@@ -45,6 +45,7 @@
             storageBucket: "hello-firebase-2019001.appspot.com",
             messagingSenderId: "463492007629"
         };
+
         firebase.initializeApp(config);
         var db = firebase.firestore();
 
@@ -59,9 +60,7 @@
             }).catch(function (error) {
                 console.error("Error removing document: ", error);
             });
-
             markerMap[id].setMap(null)
-
         }
 
         function initMap() {
