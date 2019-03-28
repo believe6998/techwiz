@@ -2,88 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a53c713d-3a41-41da-8e45-d9e537af3450" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/home-admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_25_073529_create_accounts_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_26_115721_create_complaints_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_26_115721_create_complaints_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/css/animate.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/css/animate.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/css/demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/css/demo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/css/light-bootstrap-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/css/light-bootstrap-dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/css/pe-icon-7-stroke.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/css/pe-icon-7-stroke.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/fonts/Pe-icon-7-stroke.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/fonts/Pe-icon-7-stroke.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/fonts/Pe-icon-7-stroke.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/fonts/Pe-icon-7-stroke.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/fonts/Pe-icon-7-stroke.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/fonts/Pe-icon-7-stroke.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/fonts/Pe-icon-7-stroke.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/fonts/Pe-icon-7-stroke.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/51496121_762796120767363_8583723425044889600_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/51496121_762796120767363_8583723425044889600_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/default-avatar.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/default-avatar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/face-0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/face-0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/face-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/face-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/face-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/face-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/face-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/face-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/face-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/face-4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/face-5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/face-5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/face-6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/face-6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/face-7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/face-7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/faces/tim_vector.jpe" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/faces/tim_vector.jpe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/full-screen-image-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/full-screen-image-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/loading-bubbles.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/loading-bubbles.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/logo-short-cut.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/logo-short-cut.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/mask.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/mask.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/new_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/new_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/sidebar-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/sidebar-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/sidebar-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/sidebar-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/sidebar-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/sidebar-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/sidebar-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/sidebar-4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/sidebar-5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/sidebar-5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/tim_80x80.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/img/tim_80x80.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/js/bootstrap-notify.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/js/bootstrap-notify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/js/bootstrap-select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/js/bootstrap-select.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/js/chartist.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/js/chartist.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/js/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/js/demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/js/jquery.3.2.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/js/jquery.3.2.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/js/light-bootstrap-dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/js/light-bootstrap-dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_alerts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_alerts.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_cards.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_cards.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_chartist.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_chartist.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_checkbox-radio-switch.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_checkbox-radio-switch.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_dropdown.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_dropdown.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_footers.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_footers.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_inputs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_inputs.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_misc.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_misc.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_mixins.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_navbars.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_navbars.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_responsive.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_responsive.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_sidebar-and-main-panel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_sidebar-and-main-panel.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_tables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_tables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_typography.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_typography.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_cards.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_cards.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_chartist.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_chartist.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_icons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_icons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_inputs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_inputs.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_labels.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_labels.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_morphing-buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_morphing-buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_navbars.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_navbars.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_social-buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_social-buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_tabs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_tabs.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_transparency.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_transparency.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/lbd/mixins/_vendor-prefixes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/lbd/mixins/_vendor-prefixes.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/sass/light-bootstrap-dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/sass/light-bootstrap-dashboard.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/scss/inputSearch.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin-assets/scss/inputSearch.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/account/formRegister.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/account/list.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/home.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/complaint/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/complaint/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/admin-master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/admin-master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/wellcome.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/google/cloud/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/client/complaint/form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-314">
-              <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            <state relative-caret-position="1372">
+              <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -120,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-398">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state relative-caret-position="280">
+              <caret line="174" column="19" lean-forward="true" selection-start-line="174" selection-start-column="19" selection-end-line="174" selection-end-column="19" />
               <folding>
                 <element signature="e#1501#2565#0#HTML" />
                 <element signature="e#2594#3388#0#HTML" />
@@ -501,7 +420,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30975000" />
+    <option name="totallyTimeSpent" value="31336000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -520,7 +439,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49893278" visible="true" weight="0.09141583" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49893278" visible="true" weight="0.17837235" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010672" side_tool="true" weight="0.7699784" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -797,15 +716,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/client/complaint/form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-314">
-          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        <state relative-caret-position="1372">
+          <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-398">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+        <state relative-caret-position="280">
+          <caret line="174" column="19" lean-forward="true" selection-start-line="174" selection-start-column="19" selection-end-line="174" selection-end-column="19" />
           <folding>
             <element signature="e#1501#2565#0#HTML" />
             <element signature="e#2594#3388#0#HTML" />

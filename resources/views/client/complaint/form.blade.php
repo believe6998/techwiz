@@ -48,9 +48,7 @@
                     userid: id,
                     status:0
                 }).then(function(docRef) {
-
                 }).catch(function(error) {
-                    alert("Error adding document: ", error);
                 });
 
                 $.ajaxSetup({
@@ -67,10 +65,8 @@
                         'longitude':position.coords.longitude
                     },
                     success: function (response) {
-                        alert("ok")
                     },
                     error: function () {
-                        alert("k ok")
                     }
                 });
             }
@@ -88,9 +84,7 @@
                     userid: id,
                     status:0
                 }).then(function(docRef) {
-                    alert("filebase ok ");
                 }).catch(function(error) {
-                    alert("Error adding document: ", error);
                 });
 
                 $.ajaxSetup({
@@ -109,10 +103,8 @@
                         'type':position.coords.longitude
                     },
                     success: function (response) {
-                        alert("mysql ok")
                     },
                     error: function () {
-                        alert("k ok")
                     }
                 });
             }
