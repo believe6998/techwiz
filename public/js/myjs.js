@@ -29,10 +29,12 @@ function doPostHelps(id) {
 
         $.ajaxSetup({
             beforeSend: function() {
-                $('#loadingDiv').show();
+                $('#divloaded').hide();
+                $('#divloading').show();
             },
             complete: function(){
-                $('#loadingDiv').hide();
+                $('#divloading').hide();
+                $('#divloaded').show();
             },
             success: function() {}
         });
@@ -51,15 +53,13 @@ function doPostHelps(id) {
                 'longitude': position.coords.longitude
             },
             success: function (response) {
-                alert("SOS Sened!");
+                // alert("Helps Sended!")
             },
             error: function () {
-
             }
         });
     }
 }
-
 
 
 function doPostComplaints(id) {
@@ -76,17 +76,18 @@ function doPostComplaints(id) {
             status: 0,
             time: new Date()
         }).then(function (docRef) {
-            alert("Complaint Sended!")
+            $('.modal-backdrop').remove();
+            $('#complaintModal').modal('hide')
         }).catch(function (error) {
 
         });
 
         $.ajaxSetup({
             beforeSend: function() {
-                $('#loadingDiv').show();
+                $('#loadingDiv').hide();
             },
             complete: function(){
-                $('#loadingDiv').hide();
+                $('#loadingDiv').show();
             },
             success: function() {}
         });
@@ -107,6 +108,7 @@ function doPostComplaints(id) {
                 'type': position.coords.longitude
             },
             success: function (response) {
+                // $('#btn-close-test').click()
             },
             error: function () {
 

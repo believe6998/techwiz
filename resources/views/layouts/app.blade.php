@@ -28,21 +28,47 @@
         #navbarDropdown:hover {
             color: #92C800;
         }
-    </style>
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
+        /*--thank you pop starts here--*/
+        .thank-you-pop{
+            width:100%;
+            padding:20px;
+            text-align:center;
+        }
+        .thank-you-pop img{
+            width:76px;
+            height:auto;
+            margin:0 auto;
+            display:block;
+            margin-bottom:25px;
         }
 
-
-        #map {
-            height: 92vh;
-            width: 100%;
+        .thank-you-pop h1{
+            font-size: 42px;
+            margin-bottom: 25px;
+            color:#5C5C5C;
+        }
+        .thank-you-pop p{
+            font-size: 20px;
+            margin-bottom: 27px;
+            color:#5C5C5C;
+        }
+        .thank-you-pop a{
+            display: inline-block;
+            margin: 0 auto;
+            padding: 9px 20px;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            background-color: #8BC34A;
+            border-radius: 17px;
+        }
+        .thank-you-pop a i{
+            margin-right:5px;
+            color:#fff;
         }
 
-
     </style>
+
 </head>
 <body>
 <header class="header-area">
@@ -79,7 +105,8 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="rehomesNav">
 
-                    <a class="nav-brand" href="/home" style="max-width: 243px"><img src="{{asset('img/core-img/logocut.png')}}" alt=""></a>
+                    <a class="nav-brand" href="/home" style="max-width: 243px"><img
+                                src="{{asset('img/core-img/logocut.png')}}" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -101,13 +128,14 @@
 
                                 @guest
                                 @else
-                                <li>
-                                    <a>
-                                        <button  onclick="doPostHelps({{ Auth::user()->id }})" style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
-                                            SOS
-                                        </button>
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a onclick="doPostHelps({{ Auth::user()->id }})" data-toggle="modal"
+                                           href="#ignismyModal">
+                                            <button style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
+                                                SOS
+                                            </button>
+                                        </a>
+                                    </li>
                                 @endguest
                             </ul>
 
@@ -180,13 +208,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div id="loadingDiv">
-                Dang load ne
-            </div>
 
             <div class="modal-body">
                 <form action="" method="post">
-                    <select  class="mdb-select md-form" id="type" name="type" >
+                    <select class="mdb-select md-form" id="type" name="type">
                         <option value="jam">Traffic Jam</option>
                         <option value="accident">Accident</option>
                         <option value="disaster">Disaster</option>
@@ -206,13 +231,39 @@
                         </button>
                         @guest
                         @else
-                        <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
-                            Submit
-                        </button>
+                            <button onclick="doPostComplaints({{ Auth::user()->id }})" type="button" class="btn"
+                                    name="btn-create" value="Create">
+                                Submit
+                            </button>
                         @endguest
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ignismyModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+            </div>
+
+            <div class="modal-body" id="loading">
+                <div id="divloading">
+                    <img src="https://yalantis.com/uploads/ckeditor/pictures/365/content_Loading-Loop-1.gif" alt=""
+                         alt="">
+                </div>
+                <div id="divloaded" class="thank-you-pop ">
+                    <img id="loading"
+                         src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt=""
+                         alt="">
+                    <h1>TEXT</h1>
+                    <p>Your submission is received and we will contact you soon</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
