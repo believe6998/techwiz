@@ -1,18 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Complaints;
+
+use App\Notice;
 use Illuminate\Http\Request;
-use Google\Cloud\Firestore\FirestoreClient;
-use Auth;
 
-class ComplaintsController extends Controller
+class NoticeController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +24,7 @@ class ComplaintsController extends Controller
      */
     public function create()
     {
-        return view("client.complaint.form");
+        //
     }
 
     /**
@@ -39,29 +33,18 @@ class ComplaintsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
-        $userid = Auth::user()->id;
-
-        $complaint = new Complaints();
-        $complaint->title = $request->get('title');
-        $complaint->type = $request->get('type');
-        $complaint->userid = $userid;
-        $complaint->longitude = $request->get('longitude');
-        $complaint->latitude = $request->get('latitude');
-        $complaint->save();
-        return $complaint;
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Complaints  $complaints
+     * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function show(Complaints $complaints)
+    public function show(Notice $notice)
     {
         //
     }
@@ -69,10 +52,10 @@ class ComplaintsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Complaints  $complaints
+     * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Complaints $complaints)
+    public function edit(Notice $notice)
     {
         //
     }
@@ -81,10 +64,10 @@ class ComplaintsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Complaints  $complaints
+     * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Complaints $complaints)
+    public function update(Request $request, Notice $notice)
     {
         //
     }
@@ -92,10 +75,10 @@ class ComplaintsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Complaints  $complaints
+     * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Complaints $complaints)
+    public function destroy(Notice $notice)
     {
         //
     }

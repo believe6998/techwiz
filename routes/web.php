@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 //auth
 Auth::routes();
-
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //admin
 Route::get('/admin/home', function () {
@@ -34,7 +34,7 @@ Route::get('/admin/complaint/list', function () {
 });
 //client
 Route::post('/help', 'HelpController@store');
-Route::resource('client/complaints', 'ComplaintsController');
+Route::resource('/complaints', 'ComplaintsController');
 
 Route::get('/test',function (){
     return "";
