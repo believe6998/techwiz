@@ -159,26 +159,18 @@
         </div>
     </div>
 </header>
-@guest
-@else
-
-@endguest
-
-@section('content')
-@show()
-
 <div class="modal fade" id="complaintModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="exampleModalLabel1">What is your traffic problem?</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="" method="post" id="complaint-form">
                     <select  class="mdb-select md-form" id="type" name="type" >
                         <option value="jam">Traffic Jam</option>
                         <option value="accident">Accident</option>
@@ -199,9 +191,9 @@
                         </button>
                         @guest
                         @else
-                        <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
-                            Submit
-                        </button>
+                            <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
+                                Submit
+                            </button>
                         @endguest
                     </div>
                 </form>
@@ -209,6 +201,15 @@
         </div>
     </div>
 </div>
+@guest
+@else
+
+@endguest
+
+@section('content')
+@show()
+
+
 
 <!-- **** Footer Area Start **** -->
 <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"

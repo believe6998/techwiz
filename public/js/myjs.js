@@ -63,7 +63,7 @@ function doPostComplaints(id){
             status:0,
             time: new Date()
         }).then(function(docRef) {
-            alert("Complaint Sended!")
+            alert("Complaint Sended!");
         }).catch(function(error) {
 
         });
@@ -84,6 +84,9 @@ function doPostComplaints(id){
                 'type':position.coords.longitude
             },
             success: function (response) {
+                $('#complaint-form')[0].reset();
+                $('.modal-backdrop').remove();
+                $('#complaintModal').modal('hide')
             },
             error: function () {
 
@@ -92,4 +95,5 @@ function doPostComplaints(id){
     }
 
 }
+
 
