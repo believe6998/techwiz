@@ -16,8 +16,10 @@ class CreateNoticesTable extends Migration
         Schema::create('notices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsignedInteger('complaintsId');
-            $table->foreign('complaintsId')->references('id')->on('complaints');
+            $table->unsignedInteger('userId');
+            $table->foreign('userId')->references('id')->on('users');
+            $table->string('address');
+            $table->string('description');
             $table->integer('status')->default(0);
         });
     }
