@@ -12,43 +12,11 @@
             width: 100%;
         }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 
     <div id="map" style="height: 80vh">
     </div>
 
     <script>
-        function formatDate(date) {
-            var monthNames = [
-                "January", "February", "March",
-                "April", "May", "June", "July",
-                "August", "September", "October",
-                "November", "December"
-            ];
-
-            var day = date.getDate();
-            var monthIndex = date.getMonth();
-            var year = date.getFullYear();
-
-            return day + ' ' + monthNames[monthIndex] + ' ' + year;
-        }
-
-        var currentLocation;
-
-        var config = {
-            apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
-            authDomain: "hello-firebase-2019001.firebaseapp.com",
-            databaseURL: "https://hello-firebase-2019001.firebaseio.com",
-            projectId: "hello-firebase-2019001",
-            storageBucket: "hello-firebase-2019001.appspot.com",
-            messagingSenderId: "463492007629"
-        };
-
-        if (!firebase.apps.length) {
-            firebase.initializeApp(config);
-        }
-
-        var db = firebase.firestore();
 
         var markerMap = {};
 
@@ -67,19 +35,15 @@
             markerMap[id].setMap(null)
 
         }
-
-
+        var map;
         function initMap() {
-            navigator.geolocation.getCurrentPosition(function (alocation) {
-                currentLocation = {
-                    lat: parseFloat(alocation.coords.latitude),
-                    lng: parseFloat(alocation.coords.longitude)
-                };
-                console.log(currentLocation)
-
-            });
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    map.setCenter(initialLocation);
+                });
+            }
             // Map options
-
             var styleArray = [
                 {
                     "featureType": "poi",
@@ -120,7 +84,6 @@
             var options = {
                 zoom: 15,
                 minZoom: 13,
-                center: {lat: 21.0288722, lng: 105.7795577},
                 styles: styleArray,
                 mapTypeControl: true,
                 mapTypeControlOptions: {
@@ -138,7 +101,6 @@
                 },
                 fullscreenControl: true
             };
-
             map = new google.maps.Map(document.getElementById('map'), options);
 
             var images = {

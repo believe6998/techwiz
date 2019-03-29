@@ -1,30 +1,33 @@
-
 // Cấu Hình filebase
-var config = {
-    apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
-    authDomain: "hello-firebase-2019001.firebaseapp.com",
-    databaseURL: "https://hello-firebase-2019001.firebaseio.com",
-    projectId: "hello-firebase-2019001",
-    storageBucket: "hello-firebase-2019001.appspot.com",
-    messagingSenderId: "463492007629"
-};
-firebase.initializeApp(config);
-var db = firebase.firestore();
 
-function doPostHelps(id){
+
+function doPostHelps(id) {
 
     navigator.geolocation.getCurrentPosition(showPosition);
+
     function showPosition(position) {
         db.collection("helps").add({
             longitude: position.coords.longitude,
             latitude: position.coords.latitude,
             userid: id,
-            status:0,
+            status: 0,
             time: new Date()
-        }).then(function(docRef) {
+        }).then(function (docRef) {
 
-        }).catch(function(error) {
+        }).catch(function (error) {
             alert("Error adding document: ", error);
+        });
+
+        $.ajaxSetup({
+            beforeSend: function() {
+                $('#divloaded').hide();
+                $('#divloading').show();
+            },
+            complete: function(){
+                $('#divloading').hide();
+                $('#divloaded').show();
+            },
+            success: function() {}
         });
 
         $.ajaxSetup({
@@ -36,23 +39,24 @@ function doPostHelps(id){
         $.ajax({
             'url': '/help',
             'method': 'POST',
-            'data':{
-                'latitude':position.coords.latitude,
-                'longitude':position.coords.longitude
+            'data': {
+                'latitude': position.coords.latitude,
+                'longitude': position.coords.longitude
             },
             success: function (response) {
-                alert("SOS Sened!");
+                // alert("Helps Sended!")
             },
             error: function () {
-
             }
         });
     }
 }
 
-function doPostComplaints(id){
+
+function doPostComplaints(id) {
 
     navigator.geolocation.getCurrentPosition(showPosition);
+
     function showPosition(position) {
         db.collection("complaints").add({
             latitude: position.coords.latitude,
@@ -60,12 +64,24 @@ function doPostComplaints(id){
             title: $("#title").val(),
             type: $("#type").val(),
             userid: id,
-            status:0,
+            status: 0,
             time: new Date()
-        }).then(function(docRef) {
-            alert("Complaint Sended!");
-        }).catch(function(error) {
+        }).then(function (docRef) {
+            $('.modal-backdrop').remove();
+            $('#complaintModal').modal('hide')
+        }).catch(function (error) {
 
+        });
+
+
+        $.ajaxSetup({
+            beforeSend: function() {
+                $('#loadingDiv').hide();
+            },
+            complete: function(){
+                $('#loadingDiv').show();
+            },
+            success: function() {}
         });
 
         $.ajaxSetup({
@@ -77,16 +93,14 @@ function doPostComplaints(id){
         $.ajax({
             'url': '/complaints',
             'method': 'POST',
-            'data':{
-                'latitude':position.coords.latitude,
-                'longitude':position.coords.longitude,
-                'title':position.coords.longitude,
-                'type':position.coords.longitude
+            'data': {
+                'latitude': position.coords.latitude,
+                'longitude': position.coords.longitude,
+                'title': position.coords.longitude,
+                'type': position.coords.longitude
             },
             success: function (response) {
-                $('#complaint-form')[0].reset();
-                $('.modal-backdrop').remove();
-                $('#complaintModal').modal('hide')
+
             },
             error: function () {
 

@@ -35,7 +35,6 @@
     <div id="map" style="height: 80vh">
     </div>
     <script>
-        var markerMap ={};
 
         var config = {
             apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
@@ -45,29 +44,40 @@
             storageBucket: "hello-firebase-2019001.appspot.com",
             messagingSenderId: "463492007629"
         };
+
         firebase.initializeApp(config);
         var db = firebase.firestore();
 
-        function test(id) {
+        var markerMap = {};
+
+        function deleteMarker(id) {
             db.collection("complaints").doc(id).delete().then(function () {
+
             }).catch(function (error) {
-                console.error("Error removing document: ", error);
+
             });
 
             db.collection("helps").doc(id).delete().then(function () {
-                alert("Document successfully deleted!" + id);
+
             }).catch(function (error) {
-                console.error("Error removing document: ", error);
+
             });
 
             markerMap[id].setMap(null)
 
         }
 
-        function initMap() {
-            // Map options
+        var map;
 
-            var styleArray =[
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    map.setCenter(initialLocation);
+                });
+            }
+            // Map options
+            var styleArray = [
                 {
                     "featureType": "poi",
                     "elementType": "labels.text",
@@ -103,9 +113,10 @@
                     ]
                 }
             ];
+
             var options = {
                 zoom: 15,
-                center: {lat: 21.0288722, lng: 105.7795577},
+                minZoom: 13,
                 styles: styleArray,
                 mapTypeControl: true,
                 mapTypeControlOptions: {
@@ -123,7 +134,7 @@
                 },
                 fullscreenControl: true
             };
-            var map = new google.maps.Map(document.getElementById('map'), options);
+            map = new google.maps.Map(document.getElementById('map'), options);
 
             var images = {
                 jam:
@@ -131,41 +142,44 @@
                         url: 'https://www.tycoifs.ca/wps/wcm/connect/61557331-2b17-4237-a6fe-e77ecdf8dbbb/pulse12.gif?MOD=AJPERES&CACHEID=ROOTWORKSPACE-61557331-2b17-4237-a6fe-e77ecdf8dbbb-kNcW.Bt',
                         scaledSize: new google.maps.Size(70, 70),
                         origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 32)
+                        // anchor: new google.maps.Point(0, 32)
                     },
                 accident:
                     {
                         url: 'https://hotelmarkovo.bg/en/wp-content/uploads/2018/05/hotelmarkovogreenpulse.gif',
                         scaledSize: new google.maps.Size(70, 70),
                         origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 32)
+                        // anchor: new google.maps.Point(0, 32)
                     },
                 disaster:
                     {
                         url: 'https://iwant2study.org/lookangejss/01_measurement/ejss_model_horizontalverticalquiz01/horizontalvertical/giphy.gif',
                         scaledSize: new google.maps.Size(70, 70),
                         origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 32)
+                        // anchor: new google.maps.Point(0, 32)
                     }
             };
 
             // Add Marker Function
-            function addMarker(doc,id) {
+            function addMarker(doc, id, help) {
+
                 var marker = new google.maps.Marker({
                     position: {lat: parseFloat(doc.latitude), lng: parseFloat(doc.longitude)},
                     map: map,
+                    help: help
                 });
 
-                markerMap[id]=marker;
+                markerMap[id] = marker;
+
                 // Check for customicon
 
                 if (doc.type === "jam") {
                     marker.setIcon(images.jam);
-                }else if(doc.type === "accident"){
+                } else if (doc.type === "accident") {
                     marker.setIcon(images.accident)
-                }else if(doc.type === "disaster"){
+                } else if (doc.type === "disaster") {
                     marker.setIcon(images.disaster)
-                }else if(doc.type === undefined){
+                } else if (doc.type === undefined) {
                     marker.setIcon({
                         url: 'http://www.jamiekatzpetdetective.com/stick_figure_help_button_500_clr_9911.gif',
                         scaledSize: new google.maps.Size(50, 50),
@@ -174,14 +188,18 @@
                     })
                 }
 
-                var contentString = '<div id="content">' +
-                    '<div id="siteNotice">' +
+                var contentString =
+                    '<div id="content">' +
+                    // '<h3>' + doc.type + '</h3>' +
+                    // '<h6>' + doc.title + '</h6>' +
+                    '<div>' +
+                    '<button onclick=" deleteMarker(\'' + id + '\')">Remove</button>' +
                     '</div>' +
-                    '<h1>'+doc.title+'</h1>' +
-                    '<div id="bodyContent">' +
-                    '<button onclick="test(\'' + id + '\')">xoa</button>' +
-                    '</button>' +
+                    '<div>' +
+                    '<span>' + moment(doc.time.toDate()).fromNow() + '</span>' +
+                    '</div>' +
                     '</div>';
+
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
@@ -189,11 +207,13 @@
                 marker.addListener('click', function () {
                     infowindow.open(map, marker);
                 });
+
+
             }
 
             db.collection("complaints").onSnapshot(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    addMarker(doc.data(),doc.id)
+                    addMarker(doc.data(), doc.id, false)
                 });
             }, function (error) {
                 console.log("loi" + error)
@@ -201,13 +221,16 @@
 
             db.collection("helps").onSnapshot(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    addMarker(doc.data(),doc.id)
+                    addMarker(doc.data(), doc.id, true)
                 });
             }, function (error) {
                 console.log("loi" + error)
             });
 
         }
+
+        // });
+
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZkhD8Q5_XkZEthioPUXM0_bYX3Lp56WI&callback=initMap">

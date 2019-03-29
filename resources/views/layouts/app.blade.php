@@ -21,15 +21,50 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+
     <style>
         #navbarDropdown:hover {
             color: #92C800;
         }
-    </style>
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
+        /*--thank you pop starts here--*/
+        .thank-you-pop{
+            width:100%;
+            padding:20px;
+            text-align:center;
+        }
+
+        .thank-you-pop img{
+            width:76px;
+            height:auto;
+            margin:0 auto;
+            display:block;
+            margin-bottom:25px;
+        }
+
+        .thank-you-pop h1{
+            font-size: 42px;
+            margin-bottom: 25px;
+            color:#5C5C5C;
+        }
+        .thank-you-pop p{
+            font-size: 20px;
+            margin-bottom: 27px;
+            color:#5C5C5C;
+        }
+        .thank-you-pop a{
+            display: inline-block;
+            margin: 0 auto;
+            padding: 9px 20px;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            background-color: #8BC34A;
+            border-radius: 17px;
+        }
+        .thank-you-pop a i{
+            margin-right:5px;
+            color:#fff;
         }
 
         .feature {
@@ -71,6 +106,19 @@
         @media only screen and (max-width: 420px) {
         }
     </style>
+    <script>
+        var config = {
+            apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
+            authDomain: "hello-firebase-2019001.firebaseapp.com",
+            databaseURL: "https://hello-firebase-2019001.firebaseio.com",
+            projectId: "hello-firebase-2019001",
+            storageBucket: "hello-firebase-2019001.appspot.com",
+            messagingSenderId: "463492007629"
+        };
+        firebase.initializeApp(config);
+        var db = firebase.firestore();
+    </script>
+
 </head>
 <body>
 <header class="header-area">
@@ -106,14 +154,13 @@
             <div class="container">
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="rehomesNav">
+
                     <div class="classy-navbar-toggler">
                         <span class="navbarToggler"><span></span><span></span><span></span></span>
                     </div>
                     <!-- Logo -->
                     <a class="nav-brand" href="/home"><img src="http://127.0.0.1:8000/img/core-img/logo-1.png"
                                                            alt=""></a>
-
-                    <!-- Navbar Toggler -->
 
                     <!-- Menu -->
                     <div class="classy-menu">
@@ -127,6 +174,9 @@
                                 <li class="active"><a href="/home">Home</a></li>
                                 <li><a href="/contact">Contact Us</a></li>
                                 <li><a href="/about">About Us</a></li>
+
+
+
                             </ul>
 
                             <!-- Contact btn -->
@@ -171,12 +221,16 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="feature-item">
-                                    <a class="btn help-btn" onclick="doPostHelps(4)"
-                                       style="width:70px; color: white;box-shadow: 2px 2px 10px 1px red;background-color: red;border-color: red;text-decoration: none;">
-                                        SOS
-                                    </a>
-                                </li>
+
+                                @guest
+                                @else
+                                    <li class="feature-item">
+                                        <a  class="btn help-btn" onclick="doPostHelps({{ Auth::user()->id }})" data-toggle="modal"
+                                           href="#ignismyModal" style="width:70px; color: white;box-shadow: 2px 2px 10px 1px red;background-color: red;border-color: red;text-decoration: none;">
+                                            SOS
+                                        </a>
+                                    </li>
+                                @endguest
                                 <li class="feature-item">
                                     <a class="complaint-btn btn" style="color: black;" href="#"
                                        data-target="#complaintModal" data-toggle="modal">Complaint</a>
@@ -220,8 +274,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
-                <form action="" method="post" id="complaint-form">
+                <form action="" method="post">
                     <select class="mdb-select md-form" id="type" name="type">
                         <option value="jam">Traffic Jam</option>
                         <option value="accident">Accident</option>
@@ -253,15 +308,32 @@
         </div>
     </div>
 </div>
-@guest
-@else
-
-@endguest
-
-@section('content')
-@show()
 
 
+<div class="modal fade" id="ignismyModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+            </div>
+
+            <div class="modal-body" id="loading">
+                <div id="divloading">
+                    <img src="https://yalantis.com/uploads/ckeditor/pictures/365/content_Loading-Loop-1.gif" alt=""
+                         alt="">
+                </div>
+                <div id="divloaded" class="thank-you-pop ">
+                    <img id="loading"
+                         src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt=""
+                         alt="">
+                    <h1>TEXT</h1>
+                    <p>Your submission is received and we will contact you soon</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <!-- **** Footer Area Start **** -->
 <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0"
@@ -394,7 +466,5 @@
 <script src="{{asset('/js/default-assets/active.js')}}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('js/myjs.js') }}" defer></script>
-
-
 </body>
 </html>
