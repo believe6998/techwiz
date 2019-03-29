@@ -15,10 +15,9 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        $notices = Notice::all();
+            $notices = Notice::all();
         return view('admin.notice.list-notice', compact('notices'));
     }
-
     /**
      * Show the form for creating a new resource.
      *

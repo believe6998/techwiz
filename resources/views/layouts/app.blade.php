@@ -31,36 +31,44 @@
             padding: 0;
             margin: 0;
         }
+
         .feature {
             padding-top: 10px;
         }
-        .feature-item{
+
+        .feature-item {
             display: inline;
             padding: 0 15px;
         }
+
         .noti li {
             border-bottom: 1px #92C800 solid;
             padding: 0 5px;
         }
+
         .complaint-btn {
             border: 1px #92C800 solid;
         }
+
         .complaint-btn:hover {
             color: white;
             background-color: #92C800;
         }
-        @media  only screen and (max-width: 1200px) {
+
+        @media only screen and (max-width: 1200px) {
             .feature-item {
                 display: inline;
                 padding: 0 5px;
             }
         }
-        @media  only screen and (max-width: 786px) {
-            .nav-brand img{
+
+        @media only screen and (max-width: 786px) {
+            .nav-brand img {
                 display: none;
             }
         }
-        @media  only screen and (max-width: 420px) {
+
+        @media only screen and (max-width: 420px) {
         }
     </style>
 </head>
@@ -151,19 +159,15 @@
                                         <i class="fa fa-bell"></i>
                                     </a>
 
-                                    <div style="border: 1px #92C800 solid; width: 300px; " class="dropdown-menu dropdown-menu-right"
+                                    <div style="border: 1px #92C800 solid; width: 300px; "
+                                         class="dropdown-menu dropdown-menu-right"
                                          aria-labelledby="notiDropdown">
                                         <ul class="noti">
-
-
-                                            <li>Get started with Bootstrap, the world’s most popular framework for
-                                                building responsive, mobile-first sites, with BootstrapCDN and a
-                                                template starter page</li>
-                                            <li>Get started with Bootstrap, the world’s most popular framework for
-                                                building responsive, mobile-first sites, with BootstrapCDN and a
-                                                template starter page</li>
-
-                                            <li><a href="">View more</a></li>
+                                            {{--@foreach($notices as $item)--}}
+                                                    {{--<li>{{$item->id}}</li>--}}
+                                                    {{--<li>{{$item->address}}</li>--}}
+                                                    {{--<li>{{$item->description}}</li>--}}
+                                            {{--@endforeach--}}
                                         </ul>
                                     </div>
                                 </li>
@@ -174,7 +178,8 @@
                                     </a>
                                 </li>
                                 <li class="feature-item">
-                                    <a class="complaint-btn btn" style="color: black;" href="#" data-target="#complaintModal" data-toggle="modal">Complaint</a>
+                                    <a class="complaint-btn btn" style="color: black;" href="#"
+                                       data-target="#complaintModal" data-toggle="modal">Complaint</a>
                                 </li>
                                 <li class="dropdown feature-item">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -217,7 +222,7 @@
             </div>
             <div class="modal-body">
                 <form action="" method="post" id="complaint-form">
-                    <select  class="mdb-select md-form" id="type" name="type" >
+                    <select class="mdb-select md-form" id="type" name="type">
                         <option value="jam">Traffic Jam</option>
                         <option value="accident">Accident</option>
                         <option value="disaster">Disaster</option>
@@ -237,7 +242,8 @@
                         </button>
                         @guest
                         @else
-                            <button onclick="doPostComplaints({{ Auth::user()->id }})"  type="button" class="btn" name="btn-create" value="Create">
+                            <button onclick="doPostComplaints({{ Auth::user()->id }})" type="button" class="btn"
+                                    name="btn-create" value="Create">
                                 Submit
                             </button>
                         @endguest
