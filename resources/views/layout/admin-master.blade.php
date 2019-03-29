@@ -35,6 +35,8 @@
 
     <!--    Favicon   -->
     <link rel="icon" href="{{asset('/admin-assets/img/logo-short-cut.png')}}">
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+
 </head>
 <body>
 <div class="wrapper">

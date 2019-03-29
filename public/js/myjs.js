@@ -1,14 +1,5 @@
 // Cấu Hình filebase
-var config = {
-    apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
-    authDomain: "hello-firebase-2019001.firebaseapp.com",
-    databaseURL: "https://hello-firebase-2019001.firebaseio.com",
-    projectId: "hello-firebase-2019001",
-    storageBucket: "hello-firebase-2019001.appspot.com",
-    messagingSenderId: "463492007629"
-};
-firebase.initializeApp(config);
-var db = firebase.firestore();
+
 
 function doPostHelps(id) {
 

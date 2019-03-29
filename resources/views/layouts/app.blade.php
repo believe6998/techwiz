@@ -23,7 +23,6 @@
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 
-
     <style>
         #navbarDropdown:hover {
             color: #92C800;
@@ -101,6 +100,18 @@
         @media  only screen and (max-width: 420px) {
         }
     </style>
+    <script>
+        var config = {
+            apiKey: "AIzaSyB6EvN5u7zMqsylmoqh2lX_EsFMrV1cqm8",
+            authDomain: "hello-firebase-2019001.firebaseapp.com",
+            databaseURL: "https://hello-firebase-2019001.firebaseio.com",
+            projectId: "hello-firebase-2019001",
+            storageBucket: "hello-firebase-2019001.appspot.com",
+            messagingSenderId: "463492007629"
+        };
+        firebase.initializeApp(config);
+        var db = firebase.firestore();
+    </script>
 
 </head>
 <body>
@@ -166,17 +177,7 @@
                                 <li><a href="/about">About Us</a></li>
 
 
-                                @guest
-                                @else
-                                    <li>
-                                        <a onclick="doPostHelps({{ Auth::user()->id }})" data-toggle="modal"
-                                           href="#ignismyModal">
-                                            <button style="color: white; border-radius: 34px;background-color: red;border-color: red;text-decoration: none">
-                                                SOS
-                                            </button>
-                                        </a>
-                                    </li>
-                                @endguest
+
                             </ul>
 
                             <!-- Contact btn -->
@@ -225,12 +226,16 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="feature-item">
-                                    <a class="btn help-btn" onclick="doPostHelps(4)"
-                                       style="width:70px; color: white;box-shadow: 2px 2px 10px 1px red;background-color: red;border-color: red;text-decoration: none;">
-                                        SOS
-                                    </a>
-                                </li>
+
+                                @guest
+                                @else
+                                    <li class="feature-item">
+                                        <a  class="btn help-btn" onclick="doPostHelps({{ Auth::user()->id }})" data-toggle="modal"
+                                           href="#ignismyModal" style="width:70px; color: white;box-shadow: 2px 2px 10px 1px red;background-color: red;border-color: red;text-decoration: none;">
+                                            SOS
+                                        </a>
+                                    </li>
+                                @endguest
                                 <li class="feature-item">
                                     <a class="complaint-btn btn" style="color: black;" href="#" data-target="#complaintModal" data-toggle="modal">Complaint</a>
                                 </li>
@@ -298,10 +303,8 @@
                         </button>
                         @guest
                         @else
-
                             <button onclick="doPostComplaints({{ Auth::user()->id }})" type="button" class="btn"
                                     name="btn-create" value="Create">
-
                                 Submit
                             </button>
                         @endguest
