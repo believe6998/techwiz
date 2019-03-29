@@ -309,8 +309,6 @@
 </div>
 
 
-
-
 <div class="modal fade" id="ignismyModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
