@@ -149,19 +149,12 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="rehomesNav">
 
-                    <a class="nav-brand" href="/home" style="max-width: 243px"><img
-                                src="{{asset('img/core-img/logocut.png')}}" alt=""></a>
-
-                    <!-- Navbar Toggler -->
-
                     <div class="classy-navbar-toggler">
                         <span class="navbarToggler"><span></span><span></span><span></span></span>
                     </div>
                     <!-- Logo -->
                     <a class="nav-brand" href="/home"><img src="http://127.0.0.1:8000/img/core-img/logo-1.png"
                                                            alt=""></a>
-
-                    <!-- Navbar Toggler -->
 
                     <!-- Menu -->
                     <div class="classy-menu">
@@ -314,13 +307,7 @@
         </div>
     </div>
 </div>
-@guest
-@else
 
-@endguest
-
-@section('content')
-@show()
 
 
 
